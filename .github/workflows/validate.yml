@@ -8,8 +8,8 @@ jobs:
   repository:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: python -m unittest discover -s tests -v
@@ -17,7 +17,7 @@ jobs:
   powershell-51:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Validate UTF-8 with Windows PowerShell 5.1
         shell: powershell
         run: .\fieldops-powershell-utf8\scripts\test-utf8-roundtrip.ps1 | Format-List *
@@ -25,7 +25,7 @@ jobs:
   powershell-7:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Validate UTF-8 with PowerShell 7
         shell: pwsh
         run: .\fieldops-powershell-utf8\scripts\test-utf8-roundtrip.ps1 | Format-List *

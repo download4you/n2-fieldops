@@ -1,0 +1,4 @@
+interface:
+  display_name: "CTF Field Operator"
+  short_description: "Run evidence-driven authorized CTF workflows"
+  default_prompt: "Use $fieldops-ctf-operator to investigate this authorized challenge and produce a reproducible solution."

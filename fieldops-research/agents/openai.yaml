@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps Research"
+  short_description: "Verify claims and deliver actionable answers"
+  default_prompt: "Use $fieldops-research to investigate this question, verify the important claims, and give me an actionable answer."

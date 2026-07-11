@@ -1,5 +1,26 @@
 # Copy-Ready Examples
 
+## Route an unfamiliar task
+
+```text
+Use $fieldops-orchestrator to classify this task, select the smallest useful set of
+FieldOps skills, execute it, and verify the result.
+```
+
+## Research a current or disputed claim
+
+```text
+Use $fieldops-research to verify the important claims, distinguish fact from
+inference, and give me a direct recommendation with sources and a next step.
+```
+
+## Solve an authorized challenge
+
+```text
+Use $fieldops-ctf-operator to classify this authorized CTF challenge, preserve the
+original artifacts, prove one decisive path, and reproduce the solution.
+```
+
 ## One-message technical plan
 
 ```text

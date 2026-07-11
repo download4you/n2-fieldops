@@ -1,0 +1,4 @@
+interface:
+  display_name: "Engineering FieldOps"
+  short_description: "Implement and verify risk-sensitive code changes"
+  default_prompt: "Use $fieldops-engineering to implement this repository change safely and verify the actual behavior."

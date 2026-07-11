@@ -1,0 +1,4 @@
+interface:
+  display_name: "PowerShell UTF-8"
+  short_description: "Write and validate Unicode-safe PowerShell"
+  default_prompt: "Use $fieldops-powershell-utf8 to make this PowerShell workflow preserve Persian and Unicode correctly."

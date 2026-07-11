@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prompt Refiner"
+  short_description: "Turn rough requests into execution-ready prompts"
+  default_prompt: "Use $fieldops-prompt-refiner to rewrite this request into a precise, high-leverage prompt."

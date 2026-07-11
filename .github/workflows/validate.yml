@@ -1,0 +1,31 @@
+name: Validate FieldOps
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  repository:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s tests -v
+
+  powershell-51:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate UTF-8 with Windows PowerShell 5.1
+        shell: powershell
+        run: .\fieldops-powershell-utf8\scripts\test-utf8-roundtrip.ps1 | Format-List *
+
+  powershell-7:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate UTF-8 with PowerShell 7
+        shell: pwsh
+        run: .\fieldops-powershell-utf8\scripts\test-utf8-roundtrip.ps1 | Format-List *

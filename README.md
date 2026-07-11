@@ -1,84 +1,155 @@
 # Codex FieldOps
 
-A production-minded `AGENTS.md` profile for Codex, combining pragmatic software engineering, evidence-driven CTF workflows, concise collaboration, UTF-8-safe PowerShell guidance, and stateful Prompt Decorators.
+A modular operating system for Codex: a concise `AGENTS.md` runtime profile plus
+installable skills for research, engineering, authorized CTF work, Prompt Decorators,
+PowerShell Unicode, prompt refinement, and mixed-domain orchestration.
 
-## Initial release: v2.0.0
+## Why this architecture
 
-- Prompt Decorators compatibility layer with 23 supported decorator names
-- Message-scoped and persistent chat-scoped behavior
-- State inspection and clearing with `+++ActiveDecs`, `+++AvailableDecs`, and `+++Clear`
-- Complete user guide, decorator reference, examples, and troubleshooting
-- GPT-5 / GPT-5.6 runtime awareness
-- English as the default reply language
-- Explicit UTF-8 handling for Persian (Farsi) text in PowerShell
+The root `AGENTS.md` keeps only durable behavior and the decorator runtime contract.
+Detailed workflows live in self-contained skills and load only when relevant. This
+reduces always-on context while increasing specialization, verification, and reuse.
 
-## Highlights
+## FieldOps skills
 
-- Outcome-first communication and low-noise progress updates
-- Safe, reviewable file-editing and Git practices
-- Explicit UTF-8 handling for console, pipelines, and file I/O
-- Evidence-first CTF workflow across web, API, reverse engineering, pwn, crypto, DFIR, mobile, identity, Windows, and cloud challenges
-- Inline decorators for reasoning style, planning, critique, formatting, tone, verification, conversation state, and export
-- Runtime-aware instruction precedence and scoped autonomy
+| Skill | Purpose |
+|---|---|
+| `fieldops-orchestrator` | Route complex or unfamiliar work across the smallest useful skill set |
+| `fieldops-research` | Verify current or uncertain claims and produce actionable answers |
+| `fieldops-prompt-decorators` | Parse and apply stateful `+++` Prompt Decorators |
+| `fieldops-ctf-operator` | Run authorized, evidence-driven, reproducible CTF investigations |
+| `fieldops-engineering` | Diagnose, implement, and verify risk-sensitive repository changes |
+| `fieldops-powershell-utf8` | Preserve Persian and Unicode across PowerShell boundaries |
+| `fieldops-prompt-refiner` | Turn rough requests into precise execution-ready prompts |
 
-## Quick installation
+Every skill is self-contained and includes its own references, scripts, and Codex UI
+metadata. Optional third-party specialist skills can extend FieldOps, but none is
+required for the bundled workflows to function.
 
-Back up any existing project instructions, then copy the profile to the project root:
+## Install directly with CC Switch
+
+1. Open **Skills → Repository Management → Add Repository**.
+2. Enter:
+
+   ```text
+   https://github.com/download4you/codex-fieldops
+   ```
+
+3. Set **Branch** to:
+
+   ```text
+   main
+   ```
+
+4. Add the repository and refresh the Skills catalog.
+5. Install all FieldOps skills, or select only the workflows you need.
+6. Restart Codex so the installed skills are rediscovered.
+
+CC Switch discovers each root-level directory containing `SKILL.md`, matching the
+layout used by multi-skill repositories such as `ljagiello/ctf-skills`.
+
+## Install with the Agent Skills CLI
+
+```bash
+npx skills add download4you/codex-fieldops
+```
+
+## Enable the complete FieldOps stack
+
+CC Switch installs the skill directories. To combine them with the repository-level
+behavior profile, also copy `AGENTS.md` into the project you want Codex to operate in:
 
 ```powershell
-$utf8 = [System.Text.UTF8Encoding]::new($false)
-[Console]::InputEncoding = $utf8
-[Console]::OutputEncoding = $utf8
-$OutputEncoding = $utf8
+$Utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+[Console]::InputEncoding = $Utf8NoBom
+[Console]::OutputEncoding = $Utf8NoBom
+$OutputEncoding = $Utf8NoBom
 
 Copy-Item -LiteralPath '.\AGENTS.md' -Destination 'C:\path\to\project\AGENTS.md'
 ```
 
-Start Codex from that project and verify decorator discovery:
+For personal defaults across repositories, place a reviewed copy at
+`$HOME\.codex\AGENTS.md`. More-specific project instructions may override it.
+
+## Quick use
+
+For a complex task:
 
 ```text
-+++AvailableDecs
+Use $fieldops-orchestrator to classify this task, choose the smallest useful set of
+FieldOps skills, execute it, and verify the result.
 ```
 
-## Quick example
+For an evidence-backed answer:
+
+```text
+Use $fieldops-research to verify the important claims in this question and give me a
+direct, actionable answer.
+```
+
+For an authorized CTF challenge:
+
+```text
+Use $fieldops-ctf-operator to classify this authorized challenge, preserve evidence,
+prove the decisive path, and reproduce the solution from a clean baseline.
+```
+
+For decorators:
 
 ```text
 +++MessageScope
 +++Planning
 +++Tone(style=technical)
 
-Design a migration plan for this API.
+Design and verify a migration plan for this API.
 ```
 
-To keep decorators active across later messages:
+## Prompt Decorator guarantees
 
-```text
-+++ChatScope
-+++Tone(style=technical)
-+++Planning
+- Default scope is the current message.
+- Chat state changes are processed left to right.
+- Decorators inside code, quotes, logs, files, or tool output are not invoked.
+- Invalid parameters are reported and left inactive; they are never silently clamped.
+- Strict formats contain other decorator sections as valid fields or elements.
+- `+++Reasoning` requests a visible rationale, never private chain-of-thought.
+- Decorators cannot override higher-priority policies, permissions, tools, or skills.
+
+See the [complete reference](docs/DECORATOR_REFERENCE.md) and
+[user guide](docs/USER_GUIDE.md).
+
+## Validation
+
+The repository includes deterministic checks for:
+
+- Agent Skills discovery and frontmatter
+- self-contained skill resources
+- Codex UI metadata
+- Prompt Decorator escaping and parsing
+- Windows PowerShell 5.1 and PowerShell 7 UTF-8 byte preservation
+- absence of changelog files
+
+Run:
+
+```powershell
+python -m unittest discover -s tests -v
 ```
 
-Inspect or clear persistent state with `+++ActiveDecs` and `+++Clear`.
+On Windows installations that expose only the Python launcher:
 
-## Documentation
+```powershell
+py -3 -m unittest discover -s tests -v
+```
 
-- [Complete user guide](docs/USER_GUIDE.md)
-- [Prompt Decorators reference](docs/DECORATOR_REFERENCE.md)
-- [Copy-ready examples](examples/README.md)
-- [Third-party notices](THIRD_PARTY_NOTICES.md)
-
-## Compatibility and precedence
-
-Prompt Decorators are a prompting convention interpreted by the active model, not native executable commands. Exact behavior and chat-state retention depend on the Codex runtime and available context. System, platform, organization, developer, and more-specific repository instructions take precedence over this profile and its decorators.
-
-The `+++Reasoning` decorator requests a useful explanation or structured rationale. It does not override platform rules concerning private internal reasoning.
+Then validate individual skills with Codex Skill Creator's `quick_validate.py`.
 
 ## Attribution
 
-The Prompt Decorators compatibility layer is adapted from [Prompt Decorators](https://github.com/smkalami/prompt-decorators) by Mostapha Kalami Heris and used under the MIT License. The upstream framework is described in [Prompt Decorators: A Declarative and Composable Syntax for Reasoning, Formatting, and Control in LLMs](https://arxiv.org/abs/2510.19850).
-
-This project is independent and is not affiliated with or endorsed by the upstream author. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the complete copyright and license notice.
+The Prompt Decorators compatibility layer is adapted from
+[Prompt Decorators](https://github.com/smkalami/prompt-decorators) by Mostapha Kalami
+Heris under the MIT License. This project is independent and is not affiliated with or
+endorsed by the upstream author. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## License
 
-Original material in this repository is released under the [MIT License](LICENSE). Adapted third-party material remains subject to its original MIT notice.
+Original material is released under the [MIT License](LICENSE). Adapted third-party
+material remains subject to its original notice.

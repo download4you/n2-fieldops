@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps Orchestrator"
+  short_description: "Route complex work across FieldOps skills"
+  default_prompt: "Use $fieldops-orchestrator to classify this task and coordinate the smallest useful set of FieldOps workflows."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prompt Decorators"
+  short_description: "Apply stateful prompt decorators reliably"
+  default_prompt: "Use $fieldops-prompt-decorators to interpret, validate, and apply the decorators in my request."

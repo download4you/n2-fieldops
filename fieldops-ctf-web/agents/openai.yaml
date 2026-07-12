@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps CTF Web"
+  short_description: "Exploit web and API CTF challenges"
+  default_prompt: "Use $fieldops-ctf-web to investigate and solve this authorized web or API CTF challenge."

@@ -94,9 +94,23 @@ FieldOps skills in this repository:
 - `$fieldops-engineering`: diagnose, implement, and verify repository changes.
 - `$fieldops-powershell-utf8`: preserve Unicode across PowerShell boundaries.
 - `$fieldops-prompt-refiner`: turn rough requests into execution-ready prompts.
+- `$fieldops-ctf-ai-ml`: solve AI, ML, adversarial-model, and LLM challenges.
+- `$fieldops-ctf-crypto`: solve cryptographic and mathematical challenges.
+- `$fieldops-ctf-forensics`: investigate disk, memory, network, signal, and stego evidence.
+- `$fieldops-ctf-malware`: analyze malware, C2 protocols, and anti-analysis behavior.
+- `$fieldops-ctf-misc`: handle jails, encodings, RF, Unicode, and hybrid puzzles.
+- `$fieldops-ctf-osint`: perform competition-scoped OSINT and geolocation.
+- `$fieldops-ctf-pwn`: develop native, heap, kernel, and sandbox exploits.
+- `$fieldops-ctf-reverse`: reverse binaries, bytecode, firmware, APKs, and custom VMs.
+- `$fieldops-ctf-web`: analyze web, API, browser, and identity attack surfaces.
+- `$fieldops-ctf-writeup`: produce reproducible submission-style solution reports.
 
-Use specialized installed skills alongside FieldOps when they offer deeper domain
-coverage. The orchestrator should select skills, not duplicate all of their content.
+The 17 root-level skills form the self-contained FieldOps v3 suite. For CTF work,
+`$fieldops-ctf-operator` routes to the most relevant namespaced specialist and replaces
+the upstream `solve-challenge` dispatcher. No separate `ctf-skills` installation is
+required. If classification fails or a path stalls, return to the earliest uncertain
+evidence, pivot category or tooling, test one variable at a time, and continue toward
+a clean-baseline reproduction or a precisely evidenced blocker.
 
 ## Authorized CTF and security work
 

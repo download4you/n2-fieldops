@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps CTF OSINT"
+  short_description: "Solve OSINT CTF investigations"
+  default_prompt: "Use $fieldops-ctf-osint to investigate this authorized OSINT CTF challenge with sourced evidence."

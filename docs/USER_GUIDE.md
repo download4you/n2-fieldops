@@ -15,8 +15,9 @@ Keeping detailed workflows in skills means only relevant instructions enter cont
 ### CC Switch
 
 Add `https://github.com/download4you/codex-fieldops` with branch `main`, refresh the
-catalog, and install the desired skill cards. Install all seven for the complete skill
-layer.
+catalog, and install the desired skill cards. CC Switch discovers every root-level
+directory containing `SKILL.md`: install all 17 cards for the complete FieldOps v3
+skill layer, or install individual cards for a smaller purpose-built setup.
 
 CC Switch installs selected skill directories but not the root `AGENTS.md`. Copy that
 file separately into a project when you want the complete behavior profile.
@@ -29,9 +30,9 @@ npx skills add download4you/codex-fieldops
 
 ### Manual Codex installation
 
-Copy each desired `fieldops-*` directory into `$HOME\.codex\skills`, then restart
-Codex. Do not flatten a skill: its `references`, `scripts`, and `agents` directories
-must remain inside it.
+Copy each desired root-level `fieldops-*` directory into `$HOME\.codex\skills`, then
+restart Codex. Do not flatten a skill: its `references`, `scripts`, and `agents`
+directories must remain inside it.
 
 ## Routing
 
@@ -44,9 +45,18 @@ must remain inside it.
 - Use `$fieldops-powershell-utf8` for Unicode-sensitive PowerShell.
 - Use `$fieldops-prompt-refiner` to professionalize reusable prompts or task briefs.
 
+The authorized CTF suite adds ten namespaced specialists:
+
+- `$fieldops-ctf-ai-ml`, `$fieldops-ctf-crypto`, `$fieldops-ctf-forensics`,
+  `$fieldops-ctf-malware`, and `$fieldops-ctf-misc`
+- `$fieldops-ctf-osint`, `$fieldops-ctf-pwn`, `$fieldops-ctf-reverse`,
+  `$fieldops-ctf-web`, and `$fieldops-ctf-writeup`
+
 The orchestrator selects the smallest useful set. It should not load every skill for
-every task. If a deeper third-party specialist exists, FieldOps may combine with it;
-otherwise the bundled workflow remains self-sufficient.
+every task. `$fieldops-ctf-operator` classifies a challenge and routes to these
+namespaced specialists; it replaces the upstream `solve-challenge` entrypoint. All
+techniques, references, license notices, and provenance needed by the adapted suite
+are bundled locally. Installing `ljagiello/ctf-skills` separately is not required.
 
 ## Direct-answer contract
 
@@ -98,6 +108,18 @@ Evidence priority:
 Preserve originals, prove one narrow decisive path, change one variable at a time, and
 reproduce from a documented baseline before calling a challenge solved.
 
+Category routing is evidence-driven rather than permanent. When a path stalls, the
+operator uses this recovery loop:
+
+1. Return to the earliest uncertain observation or assumption.
+2. Reclassify the decisive primitive and select a different namespaced specialist or
+   tool when the evidence supports it.
+3. Derive and test the smallest missing technique instead of stopping at a generic
+   "unsupported" answer.
+4. Record the input, state, output, and provenance of the test.
+5. Reproduce the final path from a clean or reset baseline, then hand the evidence to
+   `$fieldops-ctf-writeup` when a formal submission is needed.
+
 ## PowerShell Unicode
 
 Console, source files, object pipelines, native-process streams, and output files are
@@ -132,6 +154,10 @@ parameter bounds, composition, and clearing behavior.
 - Refresh after adding the repository.
 - Confirm each selected root folder contains `SKILL.md`.
 - Restart Codex after installation.
+
+If only some skills appear, confirm that the repository scanner is evaluating all 17
+root-level `fieldops-*` directories rather than treating the repository root as one
+skill. Each installable directory owns its own `SKILL.md` and supporting resources.
 
 ### A skill triggers too broadly
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps CTF AI/ML"
+  short_description: "Solve AI and ML CTF challenges"
+  default_prompt: "Use $fieldops-ctf-ai-ml to investigate this authorized AI or machine-learning CTF challenge."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps CTF Crypto"
+  short_description: "Solve cryptography CTF challenges"
+  default_prompt: "Use $fieldops-ctf-crypto to solve this authorized cryptography CTF challenge with reproducible evidence."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps CTF Forensics"
+  short_description: "Analyze forensic CTF artifacts"
+  default_prompt: "Use $fieldops-ctf-forensics to analyze these authorized forensic artifacts and reproduce the result."

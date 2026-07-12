@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps CTF Misc"
+  short_description: "Solve unusual and hybrid CTFs"
+  default_prompt: "Use $fieldops-ctf-misc to solve this authorized unusual or mixed-domain CTF challenge."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps CTF Writeup"
+  short_description: "Create reproducible CTF writeups"
+  default_prompt: "Use $fieldops-ctf-writeup to turn this solved challenge into a concise reproducible competition writeup."

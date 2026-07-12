@@ -1,6 +1,6 @@
 # Codex FieldOps
 
-A modular operating system for Codex: a concise `AGENTS.md` runtime profile plus
+A modular operating system for Codex: a concise `AGENTS.md` runtime profile plus 17
 installable skills for research, engineering, authorized CTF work, Prompt Decorators,
 PowerShell Unicode, prompt refinement, and mixed-domain orchestration.
 
@@ -21,10 +21,21 @@ reduces always-on context while increasing specialization, verification, and reu
 | `fieldops-engineering` | Diagnose, implement, and verify risk-sensitive repository changes |
 | `fieldops-powershell-utf8` | Preserve Persian and Unicode across PowerShell boundaries |
 | `fieldops-prompt-refiner` | Turn rough requests into precise execution-ready prompts |
+| `fieldops-ctf-ai-ml` | Analyze adversarial ML, model extraction, LLM, and AI challenge surfaces |
+| `fieldops-ctf-crypto` | Attack classical and modern cryptographic constructions and implementations |
+| `fieldops-ctf-forensics` | Investigate disk, memory, packet, signal, steganography, and artifact evidence |
+| `fieldops-ctf-malware` | Analyze malicious code, C2 traffic, obfuscation, and anti-analysis behavior |
+| `fieldops-ctf-misc` | Solve encoding, jail, RF, Unicode, game, and cross-category puzzles |
+| `fieldops-ctf-osint` | Perform competition-scoped public-source, identity, and geolocation research |
+| `fieldops-ctf-pwn` | Develop native, heap, kernel, sandbox, and exploit-chain solutions |
+| `fieldops-ctf-reverse` | Reverse binaries, APKs, firmware, bytecode, VMs, and packed targets |
+| `fieldops-ctf-web` | Test web applications, APIs, identity flows, and browser attack surfaces |
+| `fieldops-ctf-writeup` | Produce reproducible submission-style challenge documentation |
 
-Every skill is self-contained and includes its own references, scripts, and Codex UI
-metadata. Optional third-party specialist skills can extend FieldOps, but none is
-required for the bundled workflows to function.
+The v3 architecture bundles the complete CTF specialist layer inside FieldOps. Every
+skill is self-contained and includes its own references, scripts where applicable,
+and Codex UI metadata. The CTF suite does not require a separate installation of
+`ljagiello/ctf-skills` or any other specialist repository.
 
 ## Install directly with CC Switch
 
@@ -42,11 +53,15 @@ required for the bundled workflows to function.
    ```
 
 4. Add the repository and refresh the Skills catalog.
-5. Install all FieldOps skills, or select only the workflows you need.
+5. Install all 17 FieldOps skills for the complete suite, or select individual
+   root-level skill directories for a smaller installation.
 6. Restart Codex so the installed skills are rediscovered.
 
-CC Switch discovers each root-level directory containing `SKILL.md`, matching the
-layout used by multi-skill repositories such as `ljagiello/ctf-skills`.
+CC Switch discovers each root-level directory containing `SKILL.md`. It can therefore
+install any FieldOps skill independently while preserving that skill's bundled
+references, scripts, and metadata, plus the per-skill license and provenance included
+with every adapted CTF specialist. Installing the entire repository exposes all 17
+root-level skills as one self-contained suite.
 
 ## Install with the Agent Skills CLI
 
@@ -94,6 +109,12 @@ Use $fieldops-ctf-operator to classify this authorized challenge, preserve evide
 prove the decisive path, and reproduce the solution from a clean baseline.
 ```
 
+The operator routes internally to the appropriate namespaced specialist, such as
+`$fieldops-ctf-web`, `$fieldops-ctf-crypto`, or `$fieldops-ctf-reverse`. If the first
+classification is wrong or a technique stalls, it returns to the earliest uncertain
+assumption, pivots category or tooling, records the new evidence, and continues until
+it can reproduce a solution or identify a precise external blocker.
+
 For decorators:
 
 ```text
@@ -125,6 +146,8 @@ The repository includes deterministic checks for:
 - self-contained skill resources
 - Codex UI metadata
 - Prompt Decorator escaping and parsing
+- bundled CTF licensing, provenance, routing, and reference integrity
+- discovery of exactly 17 root-level, independently installable skills
 - Windows PowerShell 5.1 and PowerShell 7 UTF-8 byte preservation
 - absence of changelog files
 
@@ -148,6 +171,13 @@ The Prompt Decorators compatibility layer is adapted from
 [Prompt Decorators](https://github.com/smkalami/prompt-decorators) by Mostapha Kalami
 Heris under the MIT License. This project is independent and is not affiliated with or
 endorsed by the upstream author. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+The bundled CTF specialist material is adapted from
+[ctf-skills](https://github.com/ljagiello/ctf-skills) by Lukasz Jagiello at pinned
+revision `d19f35fd3dd2e126108752aee84c657c888126d3`, under the MIT License. FieldOps
+namespaces and extends that material with evidence handling, deterministic routing,
+cross-domain recovery, and clean-baseline reproduction. No upstream installation is
+required. The complete notice is in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## License
 

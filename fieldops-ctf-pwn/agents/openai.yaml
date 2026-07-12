@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps CTF Pwn"
+  short_description: "Exploit binary CTF targets"
+  default_prompt: "Use $fieldops-ctf-pwn to exploit this authorized binary CTF target and reproduce the solve."

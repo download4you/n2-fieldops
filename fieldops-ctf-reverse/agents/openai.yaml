@@ -1,0 +1,4 @@
+interface:
+  display_name: "FieldOps CTF Reverse"
+  short_description: "Reverse engineer CTF targets"
+  default_prompt: "Use $fieldops-ctf-reverse to understand this authorized CTF binary, firmware, or virtual machine."

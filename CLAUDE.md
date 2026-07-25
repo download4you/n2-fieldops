@@ -28,8 +28,9 @@ claude plugin validate .\dist\n2-fieldops-claude-plugin --strict
 claude plugin validate .\dist\n2-fieldops-claude-marketplace --strict
 ```
 
-The release is versioned by `VERSION`. The initial public release is `1.0.0`, so the
-tag must be `v1.0.0` and the GitHub release title should be `n2-fieldops 1.0.0`.
+The release is versioned by `VERSION`. The initial public release is `1.0.0`; for
+every release, the tag must be `v<VERSION>` and the GitHub release title must be
+`n2-fieldops <VERSION>`.
 
 ## Editing rules
 

@@ -16,9 +16,11 @@ and direct CC Switch installation.
 
 ## CC Switch installation
 
-Add repository owner `download4you`, name `n2-fieldops`, branch `main`, and leave the
-subdirectory blank. Refresh the catalog and enable the desired skills for Claude and/or
-Codex. Disable older `ctf-skills` or ZIP copies first to avoid duplicate names.
+In **Skills -> Manage Skill Repositories -> Add Repository**, use Repository URL
+`https://github.com/download4you/n2-fieldops` and branch `main`. The current CC Switch
+repository form has no subdirectory field. Refresh the catalog and enable the desired
+skills for Claude and/or Codex. Disable older `ctf-skills` or ZIP copies first to avoid
+duplicate names.
 
 ## Release assets
 

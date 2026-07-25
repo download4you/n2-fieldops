@@ -14,8 +14,10 @@ Keeping detailed workflows in skills means only relevant instructions enter cont
 
 ### CC Switch
 
-Add `https://github.com/download4you/n2-fieldops` with branch `main`, refresh the
-catalog, and install the desired skill cards. CC Switch discovers every root-level
+Open **Skills -> Manage Skill Repositories -> Add Repository**, enter
+`https://github.com/download4you/n2-fieldops` as the Repository URL and `main` as the
+branch, then refresh the catalog and install the desired skill cards. The current
+repository form has no subdirectory field. CC Switch discovers every root-level
 directory containing `SKILL.md`: install all 17 cards for the complete n2-fieldops
 skill layer, or install individual cards for a smaller purpose-built setup.
 

@@ -1,7 +1,9 @@
 """Structural tests for the generated Claude Code distribution."""
 
+import hashlib
 import json
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -107,6 +109,51 @@ class ClaudeDistributionTests(unittest.TestCase):
                 self.assertEqual(sum(name.endswith("/SKILL.md") for name in names), skill_count)
                 self.assertEqual(sum(name.endswith("/agents/openai.yaml") for name in names), openai_count)
                 self.assertTrue(names)
+
+    def test_release_archives_use_portable_order_and_metadata(self):
+        output = self.build()
+        for archive_path in output.glob("*.zip"):
+            with self.subTest(archive=archive_path.name), zipfile.ZipFile(archive_path) as archive:
+                names = archive.namelist()
+                self.assertEqual(names, sorted(names))
+                for entry in archive.infolist():
+                    self.assertEqual(entry.create_system, 3)
+                    self.assertEqual(entry.date_time, (1980, 1, 1, 0, 0, 0))
+                    self.assertEqual(entry.external_attr, 0o100644 << 16)
+
+    def test_release_hashes_ignore_checkout_line_endings(self):
+        baseline = self.build()
+        with tempfile.TemporaryDirectory() as temp_name:
+            checkout = Path(temp_name) / "checkout"
+            shutil.copytree(
+                ROOT,
+                checkout,
+                ignore=shutil.ignore_patterns(".git", "dist", "__pycache__", "*.pyc"),
+            )
+            text_suffixes = {".json", ".md", ".ps1", ".py", ".txt", ".yaml", ".yml"}
+            text_names = {".gitattributes", ".gitignore", "LICENSE", "VERSION"}
+            for path in checkout.rglob("*"):
+                if path.is_file() and (path.name in text_names or path.suffix.lower() in text_suffixes):
+                    data = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+                    path.write_bytes(data.replace(b"\n", b"\r\n"))
+            output = Path(temp_name) / "dist"
+            subprocess.run(
+                [sys.executable, str(checkout / "scripts" / "build_release.py"), "--output-dir", str(output)],
+                cwd=checkout,
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+            for filename in (
+                f"n2-fieldops-{version}-source.zip",
+                f"n2-fieldops-{version}-claude-plugin.zip",
+                f"n2-fieldops-{version}-claude-marketplace.zip",
+            ):
+                with self.subTest(archive=filename):
+                    expected = hashlib.sha256((baseline / filename).read_bytes()).digest()
+                    actual = hashlib.sha256((output / filename).read_bytes()).digest()
+                    self.assertEqual(actual, expected)
 
 
 if __name__ == "__main__":

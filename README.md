@@ -12,23 +12,23 @@ unpredictable install collisions.
 
 ## Install directly with CC Switch
 
-In CC Switch, open **Skills -> Repository Management -> Add Repository** and enter:
+In current CC Switch releases, open **Skills -> Manage Skill Repositories -> Add
+Repository** and enter:
 
 | Field | Value |
 |---|---|
-| Owner | `download4you` |
-| Name | `n2-fieldops` |
+| Repository URL | `https://github.com/download4you/n2-fieldops` |
 | Branch | `main` |
-| Subdirectory | leave blank |
 
-Equivalent repository URL:
+CC Switch also accepts the compact repository form:
 
 ```text
-https://github.com/download4you/n2-fieldops
+download4you/n2-fieldops
 ```
 
 Refresh the catalog and install the skills for the Claude and/or Codex application
-tabs. The repository intentionally exposes exactly 17 root skills. If an older
+tabs. No subdirectory is required or supported by the current repository form. The
+repository intentionally exposes exactly 17 root skills. If an older
 `ljagiello/ctf-skills` or ZIP-based copy is enabled, disable or remove it first to
 avoid duplicate routing and stale content.
 
@@ -123,6 +123,13 @@ The source prompt transcripts were used as local design inputs, not as third-par
 code. Unsafe blanket-authorization and fictional-network clauses were intentionally
 removed; the shipped profiles require clear authorization for security work and do
 not promise hidden chain-of-thought disclosure.
+
+## Version lineage
+
+The n2-fieldops product line starts at `v1.0.0`. Older `v2.x` and `v3.0.0` releases
+visible in this repository belong to the predecessor Codex FieldOps project and are
+retained as provenance history. Use the `main` branch or GitHub's latest n2-fieldops
+release rather than selecting the numerically highest legacy tag.
 
 ## License
 

@@ -17,6 +17,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / "claude-plugin-template"
 VERSION_RE = re.compile(r"^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$")
+TEXT_SUFFIXES = frozenset({".json", ".md", ".ps1", ".py", ".txt", ".yaml", ".yml"})
+TEXT_NAMES = frozenset({".gitattributes", ".gitignore", "LICENSE", "VERSION"})
 
 
 def read_version() -> str:
@@ -28,7 +30,12 @@ def read_version() -> str:
 
 def root_skills() -> list[Path]:
     skills = sorted(
-        path for path in ROOT.iterdir() if path.is_dir() and (path / "SKILL.md").is_file()
+        (
+            path
+            for path in ROOT.iterdir()
+            if path.is_dir() and (path / "SKILL.md").is_file()
+        ),
+        key=lambda path: path.name,
     )
     if len(skills) != 17:
         raise ValueError(f"expected 17 root skills, found {len(skills)}")
@@ -58,6 +65,25 @@ def write_text(path: Path, text: str) -> None:
         handle.write(text)
 
 
+def is_text_file(path: Path) -> bool:
+    return path.name in TEXT_NAMES or path.suffix.lower() in TEXT_SUFFIXES
+
+
+def canonical_file_bytes(path: Path) -> bytes:
+    data = path.read_bytes()
+    if is_text_file(path):
+        # Git checkout settings must not affect release hashes.
+        return data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return data
+
+
+def sorted_tree(source: Path) -> list[Path]:
+    return sorted(
+        source.rglob("*"),
+        key=lambda path: path.relative_to(source).as_posix(),
+    )
+
+
 def transform_for_claude(text: str) -> str:
     # Keep the canonical skill prose portable across Codex and Claude. Claude users
     # should not see Codex-only `$fieldops-*` invocation syntax or repo-relative
@@ -79,13 +105,13 @@ def transform_for_claude(text: str) -> str:
 
 
 def copy_skill(source: Path, destination: Path) -> None:
-    for path in sorted(source.rglob("*")):
+    for path in sorted_tree(source):
         relative = path.relative_to(source)
         if "agents" in relative.parts or "__pycache__" in relative.parts:
             continue
         if path.is_file() and path.suffix != ".pyc":
             target = destination / relative
-            if path.suffix.lower() in {".md", ".txt", ".yaml", ".yml", ".json", ".py", ".ps1"}:
+            if is_text_file(path):
                 write_text(target, transform_for_claude(path.read_text(encoding="utf-8")))
             else:
                 target.parent.mkdir(parents=True, exist_ok=True)
@@ -119,7 +145,7 @@ def build_plugin(output: Path, version: str) -> Path:
 
     docs = plugin / "docs"
     docs.mkdir(parents=True, exist_ok=True)
-    for source in sorted((TEMPLATE / "docs").glob("*.md")):
+    for source in sorted((TEMPLATE / "docs").glob("*.md"), key=lambda path: path.name):
         write_text(docs / source.name, source.read_text(encoding="utf-8"))
     decorator_doc = ROOT / "docs" / "DECORATOR_REFERENCE.md"
     write_text(docs / decorator_doc.name, decorator_doc.read_text(encoding="utf-8"))
@@ -147,7 +173,7 @@ def build_marketplace(output: Path, plugin: Path, version: str) -> Path:
 
 
 def add_tree(archive: zipfile.ZipFile, source: Path, prefix: str = "") -> None:
-    for path in sorted(source.rglob("*")):
+    for path in sorted_tree(source):
         relative_path = path.relative_to(source)
         if (
             not path.is_file()
@@ -162,9 +188,10 @@ def add_tree(archive: zipfile.ZipFile, source: Path, prefix: str = "") -> None:
         if name.startswith("/") or ".." in Path(name).parts:
             raise ValueError(f"unsafe archive path: {name}")
         info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+        info.create_system = 3
         info.compress_type = zipfile.ZIP_DEFLATED
         info.external_attr = (stat.S_IFREG | 0o644) << 16
-        archive.writestr(info, path.read_bytes())
+        archive.writestr(info, canonical_file_bytes(path))
 
 
 def zip_tree(source: Path, destination: Path, prefix: str) -> None:
@@ -185,7 +212,7 @@ def build_archives(output: Path, version: str, plugin: Path, marketplace: Path) 
 
 def write_checksums(files: list[Path], output: Path) -> Path:
     lines = []
-    for path in sorted(files):
+    for path in sorted(files, key=lambda item: item.name):
         digest = hashlib.sha256(path.read_bytes()).hexdigest()
         lines.append(f"{digest}  {path.name}")
     checksums = output / "SHA256SUMS"

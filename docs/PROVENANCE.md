@@ -26,11 +26,14 @@ release.
   `LICENSE` and `UPSTREAM.md` file.
 - Hardened authorization and network assumptions; removed blanket authorization,
   fictional-network, and hidden-reasoning promises from shipped profiles.
-- Added portable `when_to_use` routing hints and neutralized Codex-only skill tokens in
-  the canonical skill prose so the same tree works in Claude and Codex.
+- Moved portable trigger guidance into each skill description and neutralized
+  Codex-only skill tokens in the canonical skill prose so the same tree works in
+  Claude and Codex.
 - Added deterministic router, decorator parser, and PowerShell UTF-8 checks.
 - Added a release builder that materializes the native Claude plugin only in release
   artifacts, preventing duplicate recursive discovery by CC Switch.
+- Started the renamed n2-fieldops product line at `v1.0.0`; predecessor `v2.x` and
+  `v3.0.0` tags are retained as historical Codex FieldOps provenance.
 
 ## Verification evidence
 

@@ -16,12 +16,14 @@ another visible directory in this repository: CC Switch recursively scans all fo
 
 ## Clean CC Switch test
 
-1. Add `download4you/n2-fieldops`, branch `main`, with no subdirectory.
-2. Refresh the repository catalog.
-3. Confirm exactly 17 FieldOps cards are listed.
-4. Disable older `ljagiello/ctf-skills` or ZIP copies before installing the matching
+1. Open **Skills -> Manage Skill Repositories -> Add Repository**.
+2. Enter repository URL `https://github.com/download4you/n2-fieldops` and branch
+   `main`. The current CC Switch repository form has no subdirectory field.
+3. Refresh the repository catalog.
+4. Confirm exactly 17 FieldOps cards are listed.
+5. Disable older `ljagiello/ctf-skills` or ZIP copies before installing the matching
    names, otherwise stale cards can win the install-name collision.
-5. Enable the installed skills for the Claude and/or Codex application tab.
+6. Enable the installed skills for the Claude and/or Codex application tab.
 
 ## Native Claude artifact
 

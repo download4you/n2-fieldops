@@ -1,6 +1,6 @@
 ---
 name: fieldops-research
-description: Investigate externally verifiable, uncertain, current, comparative, or high-consequence questions and deliver concise evidence-backed actionable answers. Use when facts may have changed, claims need checking, sources disagree, the user asks for recommendations or comparisons, or a question requires combining local evidence with official documentation, APIs, repositories, or web sources. Do not trigger for trivial stable facts or tasks already covered by a narrower specialist skill.
+description: Investigates externally verifiable, uncertain, current, comparative, or high-consequence questions and delivers concise, evidence-backed, actionable answers. Use when facts may have changed, claims need fact-checking, sources disagree, the user wants a recommendation or comparison (which is better, is it still true, latest version, compare X vs Y, verify this claim), or a question needs combining local evidence with official documentation, APIs, repositories, or web sources. Not for trivial stable facts or tasks already handled by a narrower specialist skill.
 ---
 
 # FieldOps Research

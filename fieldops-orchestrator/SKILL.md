@@ -1,6 +1,6 @@
 ---
 name: fieldops-orchestrator
-description: Coordinate multiple FieldOps skills for complex, unfamiliar, or mixed-domain work spanning research, prompt control, authorized CTF evidence, repository changes, PowerShell Unicode handling, or prompt refinement. Use when a task needs two or more FieldOps workflows, when the correct specialist is unclear, or when the user explicitly invokes $fieldops-orchestrator. Prefer a narrower skill for clearly single-domain tasks.
+description: Coordinates multiple FieldOps skills for complex, unfamiliar, or mixed-domain work spanning research, prompt control, authorized CTF evidence, repository changes, PowerShell Unicode handling, or prompt refinement. Use when a task needs two or more FieldOps workflows, when the correct specialist is unclear, or when the user invokes fieldops-orchestrator. Prefer a narrower skill for clearly single-domain tasks.
 ---
 
 # FieldOps Orchestrator

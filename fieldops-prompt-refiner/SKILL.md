@@ -1,6 +1,6 @@
 ---
 name: fieldops-prompt-refiner
-description: Transform rough, ambiguous, overloaded, or reusable requests into precise execution-ready prompts for coding agents. Use when asked to improve, rewrite, structure, modularize, audit, or professionalize a prompt, AGENTS.md instruction set, task brief, or agent workflow. Preserve intent while clarifying outcome, scope, inputs, constraints, authority, verification, and deliverables. Do not use merely to answer a well-specified task.
+description: Transforms rough, ambiguous, overloaded, or reusable requests into precise, execution-ready prompts for coding agents. Use when asked to improve, rewrite, refine, tighten, structure, modularize, audit, or professionalize a prompt, AGENTS.md instruction set, task brief, system prompt, or agent workflow. Preserves intent while clarifying outcome, scope, inputs, constraints, authority, verification, and deliverables. Does not apply when merely executing an already well-specified task.
 ---
 
 # Prompt Refiner

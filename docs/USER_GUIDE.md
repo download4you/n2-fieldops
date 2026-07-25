@@ -14,9 +14,9 @@ Keeping detailed workflows in skills means only relevant instructions enter cont
 
 ### CC Switch
 
-Add `https://github.com/download4you/codex-fieldops` with branch `main`, refresh the
+Add `https://github.com/download4you/n2-fieldops` with branch `main`, refresh the
 catalog, and install the desired skill cards. CC Switch discovers every root-level
-directory containing `SKILL.md`: install all 17 cards for the complete FieldOps v3
+directory containing `SKILL.md`: install all 17 cards for the complete n2-fieldops
 skill layer, or install individual cards for a smaller purpose-built setup.
 
 CC Switch installs selected skill directories but not the root `AGENTS.md`. Copy that
@@ -25,14 +25,22 @@ file separately into a project when you want the complete behavior profile.
 ### Agent Skills CLI
 
 ```bash
-npx skills add download4you/codex-fieldops
+npx skills add download4you/n2-fieldops
 ```
 
 ### Manual Codex installation
 
-Copy each desired root-level `fieldops-*` directory into `$HOME\.codex\skills`, then
+Copy each desired root-level `fieldops-*` directory into `$HOME\.codex\skills` or
+`$HOME\.claude\skills`, then
 restart Codex. Do not flatten a skill: its `references`, `scripts`, and `agents`
 directories must remain inside it.
+
+### Claude native plugin
+
+Build or download the release asset `n2-fieldops-<version>-claude-plugin.zip` and
+run `claude --plugin-dir` against the extracted plugin directory. The marketplace
+bundle in the same release can be registered as a local Claude marketplace. The
+canonical root tree remains the preferred CC Switch path for both Claude and Codex.
 
 ## Routing
 

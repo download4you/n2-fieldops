@@ -15,10 +15,10 @@ Treat the investigation as stuck after two attempts that produce no discriminati
 
 ## Common pivots
 
-- Web client blob or WASM -> `$fieldops-ctf-reverse`
-- JWT or custom signature -> `$fieldops-ctf-crypto`
-- Binary understood but exploit primitive needed -> `$fieldops-ctf-pwn`
-- PCAP contains an executable or C2 -> `$fieldops-ctf-malware`
-- Dump reveals an identity or location clue -> `$fieldops-ctf-osint`
-- Unknown encoding or restricted interpreter -> `$fieldops-ctf-misc`
-- Model artifact or prompt boundary -> `$fieldops-ctf-ai-ml`
+- Web client blob or WASM -> `fieldops-ctf-reverse`
+- JWT or custom signature -> `fieldops-ctf-crypto`
+- Binary understood but exploit primitive needed -> `fieldops-ctf-pwn`
+- PCAP contains an executable or C2 -> `fieldops-ctf-malware`
+- Dump reveals an identity or location clue -> `fieldops-ctf-osint`
+- Unknown encoding or restricted interpreter -> `fieldops-ctf-misc`
+- Model artifact or prompt boundary -> `fieldops-ctf-ai-ml`

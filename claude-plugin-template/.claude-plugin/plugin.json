@@ -1,0 +1,24 @@
+{
+  "name": "n2-fieldops",
+  "version": "1.0.0",
+  "description": "A dual-runtime FieldOps suite with 17 evidence-driven skills for Claude Code, Codex, and CC Switch.",
+  "author": {
+    "name": "download4you",
+    "url": "https://github.com/download4you"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/download4you/n2-fieldops",
+  "repository": "https://github.com/download4you/n2-fieldops",
+  "keywords": [
+    "fieldops",
+    "agent-skills",
+    "codex",
+    "claude-code",
+    "cc-switch",
+    "ctf",
+    "security",
+    "prompt-decorators",
+    "powershell",
+    "research"
+  ]
+}

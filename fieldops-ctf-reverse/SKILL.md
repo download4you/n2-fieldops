@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-reverse
-description: Provides reverse engineering techniques for CTF challenges. Use when the main job is to understand how a compiled, obfuscated, packed, or virtualized target works before exploiting or solving it, including binaries, APKs, WASM, firmware, custom VMs, bytecode, game clients, malware-like loaders, and anti-debug or anti-analysis logic. Do not use it when the vulnerability is already understood and the remaining task is exploitation; use pwn instead. Do not use it for pure web workflows, log or disk forensics, or standalone crypto problems unless reversing the implementation is the real blocker.
+description: Reverse compiled, obfuscated, packed, or virtualized targets in authorized CTF challenges. Covers ELF, PE, Mach-O, Android APKs, WASM, firmware, custom VMs and bytecode, .NET, Go, Rust, Swift, Kotlin, game clients, loaders, and anti-debug or anti-analysis logic with tools such as Ghidra, IDA, radare2, GDB, Frida, angr, Qiling, and Unicorn. Use when asked to reverse, decompile, or disassemble a binary, explain an unknown executable, solve a crackme, recover a hidden flag, unpack a protected sample, defeat anti-analysis, or inspect an .apk, .exe, .so, .dll, or .wasm. Pivot to fieldops-ctf-pwn once the vulnerability is understood and only exploitation remains; prefer web, forensics, or crypto when reversing is not the decisive blocker.
 ---
 
 
@@ -13,9 +13,9 @@ description: Provides reverse engineering techniques for CTF challenges. Use whe
 - Begin with passive inspection and runtime evidence. Confirm tool availability before installing anything, using external services, or uploading artifacts.
 - Maintain a compact evidence ledger: observation, source, hypothesis, discriminating test, result, and next uncertainty.
 - Prove the smallest decisive primitive, change one variable per validation, and record negative evidence to avoid equivalent retries.
-- Route by the current blocker. Pivot to another bundled `$fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
+- Route by the current blocker. Pivot to another bundled `fieldops-ctf-*` specialist skill without discarding the evidence ledger when the problem crosses domains.
 - If a documented technique does not fit, derive the transform or trust boundary from observed behavior, build the smallest local experiment, and return to the earliest unsupported assumption when it fails.
-- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `$fieldops-ctf-writeup` for a final competition handoff.
+- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use the `fieldops-ctf-writeup` skill for a final competition handoff.
 
 Quick reference for RE challenges. For detailed techniques, see supporting files.
 
@@ -71,13 +71,13 @@ r2pm -ci r2ghidra   # Native Ghidra decompiler for radare2
 
 ## When to Pivot
 
-- If you already understand the binary and now need heap, ROP, or kernel exploitation, switch to `$fieldops-ctf-pwn`.
-- If the challenge is really about recovering deleted files, PCAP data, or disk artifacts, switch to `$fieldops-ctf-forensics`.
-- If the target is a web app and you are only reversing a small client-side helper script, switch to `$fieldops-ctf-web`.
-- If the binary implements a machine learning model and the challenge is about model attacks or adversarial inputs, switch to `$fieldops-ctf-ai-ml`.
-- If the reversed binary's core logic is a cryptographic algorithm or math problem, switch to `$fieldops-ctf-crypto`.
-- If the binary is a real malware sample with C2, packing, or evasion behavior, switch to `$fieldops-ctf-malware`.
-- If the challenge is a toy VM, encoding puzzle, or pyjail rather than a real binary, switch to `$fieldops-ctf-misc`.
+- If you already understand the binary and now need heap, ROP, or kernel exploitation, switch to the `fieldops-ctf-pwn` skill.
+- If the challenge is really about recovering deleted files, PCAP data, or disk artifacts, switch to the `fieldops-ctf-forensics` skill.
+- If the target is a web app and you are only reversing a small client-side helper script, switch to the `fieldops-ctf-web` skill.
+- If the binary implements a machine learning model and the challenge is about model attacks or adversarial inputs, switch to the `fieldops-ctf-ai-ml` skill.
+- If the reversed binary's core logic is a cryptographic algorithm or math problem, switch to the `fieldops-ctf-crypto` skill.
+- If the binary is a real malware sample with C2, packing, or evasion behavior, switch to the `fieldops-ctf-malware` skill.
+- If the challenge is a toy VM, encoding puzzle, or pyjail rather than a real binary, switch to the `fieldops-ctf-misc` skill.
 
 ## Problem-Solving Workflow
 

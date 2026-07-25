@@ -1,6 +1,6 @@
 ---
 name: fieldops-prompt-decorators
-description: Interpret and execute Prompt Decorators written with +++ syntax, including message and chat scope, parameter validation, composition, conflict resolution, state inspection, selective clearing, and export. Use whenever the user includes a supported +++Decorator token or asks to create, validate, debug, or explain decorator behavior. Do not trigger for ordinary tone, plan, or formatting requests without decorator syntax or discussion.
+description: "Interprets and executes Prompt Decorators written with +++Name(key=value) syntax, handling message vs. chat scope, parameter validation, decorator composition, conflict resolution, retained-state inspection (ActiveDecs and AvailableDecs), selective clearing, and conversation export or dump. Use when a message contains a supported +++ token (for example +++Planning, +++StepByStep, +++Reasoning, +++Interactive, +++Refine, +++Export, +++Dump, +++ChatScope, or +++MessageScope) or when the user asks to create, validate, debug, or explain decorator behavior. Do not trigger for ordinary tone, plan, or formatting requests that contain no +++ decorator syntax or discussion."
 ---
 
 # Prompt Decorator Runtime

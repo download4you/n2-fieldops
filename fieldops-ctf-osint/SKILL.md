@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-osint
-description: Provides open source intelligence techniques for CTF challenges. Use when gathering information from public sources, social media, geolocation, DNS records, username enumeration, reverse image search, Google dorking, Wayback Machine, Tor relays, FEC filings, or identifying unknown data like hashes and coordinates.
+description: Provides open source intelligence (OSINT) techniques for authorized CTF challenges, covering attribution and information-gathering from public sources. Use when investigating social media accounts (Twitter/X, Tumblr, BlueSky, Discord), geolocating images (EXIF, reverse image search, Street View, MGRS, Plus Codes), doing DNS/WHOIS recon, username enumeration, Google dorking, Wayback Machine, Shodan/Censys, Tor relay lookups, FEC filings, or identifying unknown data like hashes and coordinates.
 ---
 
 
@@ -13,9 +13,9 @@ description: Provides open source intelligence techniques for CTF challenges. Us
 - Begin with passive inspection and runtime evidence. Confirm tool availability before installing anything, using external services, or uploading artifacts.
 - Maintain a compact evidence ledger: observation, source, hypothesis, discriminating test, result, and next uncertainty.
 - Prove the smallest decisive primitive, change one variable per validation, and record negative evidence to avoid equivalent retries.
-- Route by the current blocker. Pivot to another bundled `$fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
+- Route by the current blocker. Pivot to another bundled `fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
 - If a documented technique does not fit, derive the transform or trust boundary from observed behavior, build the smallest local experiment, and return to the earliest unsupported assumption when it fails.
-- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `$fieldops-ctf-writeup` for a final competition handoff.
+- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `fieldops-ctf-writeup` for a final competition handoff.
 
 Quick reference for OSINT CTF challenges. Each technique has a one-liner here; see supporting files for full details.
 
@@ -46,9 +46,9 @@ brew install whois bind nmap exiftool imagemagick curl
 
 ## When to Pivot
 
-- If you already have the files or packets locally and now need extraction or carving, switch to `$fieldops-ctf-forensics`.
-- If the task becomes active exploitation of a live HTTP service, switch to `$fieldops-ctf-web`.
-- If you uncover malware samples, beacons, or suspicious binaries during attribution, switch to `$fieldops-ctf-malware`.
+- If you already have the files or packets locally and now need extraction or carving, switch to `fieldops-ctf-forensics`.
+- If the task becomes active exploitation of a live HTTP service, switch to `fieldops-ctf-web`.
+- If you uncover malware samples, beacons, or suspicious binaries during attribution, switch to `fieldops-ctf-malware`.
 
 ## Quick Start Commands
 

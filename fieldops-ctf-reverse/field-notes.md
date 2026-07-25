@@ -105,7 +105,7 @@ wasm2wat main.wasm -o main.wat    # Binary → text
 wat2wasm main.wat -o patched.wasm # Text → binary
 ```
 
-**WASM game patching (Tac Tic Toe, Pragyan 2026):** If proof generation is independent of move quality, patch minimax (flip `i64.lt_s` → `i64.gt_s`, change bestScore sign) to make AI play badly while proofs remain valid. Invoke `$fieldops-ctf-misc` for full game patching patterns (games-and-vms).
+**WASM game patching (Tac Tic Toe, Pragyan 2026):** If proof generation is independent of move quality, patch minimax (flip `i64.lt_s` → `i64.gt_s`, change bestScore sign) to make AI play badly while proofs remain valid. Invoke `fieldops-ctf-misc` for full game patching patterns (games-and-vms).
 
 ### Android APK
 `apktool d app.apk -o decoded/` for resources; `jadx app.apk` for Java decompilation. Check `decoded/res/values/strings.xml` for flags. See [tools.md](tools.md#android-apk).

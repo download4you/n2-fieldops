@@ -1,6 +1,6 @@
 ---
 name: fieldops-engineering
-description: Diagnose, implement, and verify non-trivial or risk-sensitive changes in existing repositories while preserving user work, following repository instructions, limiting mutation to authorized scope, using reviewable patches, and producing evidence-backed handoffs. Use for bug fixes, features, refactors, migrations, configuration changes, overlapping worktrees, or investigations where verification and change control matter. Do not trigger for isolated code snippets or simple explanations. For diagnosis-only requests, prove and explain the cause without fixing unless requested.
+description: Diagnoses, implements, and verifies non-trivial or risk-sensitive changes in an existing repository while preserving the user's uncommitted work, following repository instructions (AGENTS.md or CLAUDE.md), keeping edits within authorized scope, and handing off with runtime evidence. Use when the user asks to fix a bug, add or change a feature, refactor, migrate, edit configuration, chase down a regression, or make a change safely amid overlapping edits or worktrees where verification and change control matter. Not for isolated code snippets or simple explanations; for diagnosis-only requests, prove and explain the cause without fixing unless asked.
 ---
 
 # Engineering FieldOps

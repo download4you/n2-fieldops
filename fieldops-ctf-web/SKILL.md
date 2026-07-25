@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-web
-description: Provides web exploitation techniques for CTF challenges. Use when the target is primarily an HTTP application, API, browser client, template engine, identity flow, or smart-contract frontend/backend surface, including XSS, SQLi, SSTI, SSRF, XXE, JWT, auth bypass, file upload, request smuggling, OAuth/OIDC, SAML, prototype pollution, and similar web bugs. Do not use it for native binary memory corruption, reverse engineering of standalone executables, disk or memory forensics, or pure cryptanalysis unless the web flaw is still the main path to the flag.
+description: Provides web exploitation techniques for authorized CTF challenges. Use when the target is primarily an HTTP application, API, browser client, template engine, identity flow, or smart-contract frontend/backend surface, including XSS, SQLi, SSTI, SSRF, XXE, JWT, auth bypass, file upload, request smuggling, OAuth/OIDC, SAML, prototype pollution, and similar web bugs. Do not use it for native binary memory corruption, reverse engineering of standalone executables, disk or memory forensics, or pure cryptanalysis unless the web flaw is still the main path to the flag.
 ---
 
 
@@ -13,9 +13,9 @@ description: Provides web exploitation techniques for CTF challenges. Use when t
 - Begin with passive inspection and runtime evidence. Confirm tool availability before installing anything, using external services, or uploading artifacts.
 - Maintain a compact evidence ledger: observation, source, hypothesis, discriminating test, result, and next uncertainty.
 - Prove the smallest decisive primitive, change one variable per validation, and record negative evidence to avoid equivalent retries.
-- Route by the current blocker. Pivot to another bundled `$fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
+- Route by the current blocker. Pivot to another bundled `fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
 - If a documented technique does not fit, derive the transform or trust boundary from observed behavior, build the smallest local experiment, and return to the earliest unsupported assumption when it fails.
-- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `$fieldops-ctf-writeup` for a final competition handoff.
+- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `fieldops-ctf-writeup` for a final competition handoff.
 
 Use this skill as a routing and execution guide for web-heavy challenges. Keep the first pass short: map the app, confirm the trust boundary, and only then dive into the detailed technique notes.
 
@@ -69,11 +69,11 @@ go install github.com/ffuf/ffuf/v2@latest
 
 ## When to Pivot
 
-- If the target is a native binary, custom VM, or firmware image, switch to `$fieldops-ctf-reverse` first.
-- If the HTTP bug only gives you code execution and the hard part becomes memory corruption or seccomp escape, switch to `$fieldops-ctf-pwn`.
-- If the "web" challenge really turns on JWT math, custom MACs, or crypto primitives, switch to `$fieldops-ctf-crypto`.
-- If the web challenge involves analyzing logs, PCAPs, or recovering artifacts from a web server, switch to `$fieldops-ctf-forensics`.
-- If the challenge requires gathering intelligence from public web sources, DNS records, or social media before exploitation, switch to `$fieldops-ctf-osint`.
+- If the target is a native binary, custom VM, or firmware image, switch to `fieldops-ctf-reverse` first.
+- If the HTTP bug only gives you code execution and the hard part becomes memory corruption or seccomp escape, switch to `fieldops-ctf-pwn`.
+- If the "web" challenge really turns on JWT math, custom MACs, or crypto primitives, switch to `fieldops-ctf-crypto`.
+- If the web challenge involves analyzing logs, PCAPs, or recovering artifacts from a web server, switch to `fieldops-ctf-forensics`.
+- If the challenge requires gathering intelligence from public web sources, DNS records, or social media before exploitation, switch to `fieldops-ctf-osint`.
 
 ## First-Pass Workflow
 

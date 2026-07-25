@@ -16,6 +16,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m unittest discover -s tests -v
+      - name: Validate release layout
+        run: python scripts/build_release.py --check
 
   powershell-51:
     runs-on: windows-latest

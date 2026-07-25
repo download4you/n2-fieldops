@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-forensics
-description: Provides digital forensics and signal analysis techniques for CTF challenges. Use when analyzing disk images, memory dumps, event logs, network captures, cryptocurrency transactions, steganography, PDF analysis, Windows registry, Volatility, PCAP, Docker images, coredumps, side-channel power traces, DTMF audio spectrograms, packet timing analysis, CD audio disc images, or recovering deleted files and credentials.
+description: Provides digital forensics, steganography, and signal-analysis techniques for authorized CTF challenges. Covers disk-image mounting and file carving, deleted-file and partition recovery, memory forensics with Volatility, Windows event logs (.evtx) and registry/SAM parsing, PCAP and network forensics, image/audio/video steganography, PDF analysis, USB/HID peripheral capture, hardware and side-channel signal decoding, and Bitcoin/blockchain tracing. Use when analyzing disk images, memory dumps, event logs, network captures, coredumps, cryptocurrency transactions, steganography, PDFs, Windows registry, Volatility output, PCAPs, Docker images, side-channel power traces, DTMF or SSTV audio spectrograms, packet-timing covert channels, or CD audio disc images, or when recovering deleted files, credentials, or hidden flags.
 ---
 
 
@@ -13,9 +13,9 @@ description: Provides digital forensics and signal analysis techniques for CTF c
 - Begin with passive inspection and runtime evidence. Confirm tool availability before installing anything, using external services, or uploading artifacts.
 - Maintain a compact evidence ledger: observation, source, hypothesis, discriminating test, result, and next uncertainty.
 - Prove the smallest decisive primitive, change one variable per validation, and record negative evidence to avoid equivalent retries.
-- Route by the current blocker. Pivot to another bundled `$fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
+- Route by the current blocker. Pivot to another bundled `fieldops-ctf-*` specialist skill without discarding the evidence ledger when the problem crosses domains.
 - If a documented technique does not fit, derive the transform or trust boundary from observed behavior, build the smallest local experiment, and return to the earliest unsupported assumption when it fails.
-- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `$fieldops-ctf-writeup` for a final competition handoff.
+- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use the `fieldops-ctf-writeup` skill for a final competition handoff.
 
 Quick reference for forensics CTF challenges. Each technique has a one-liner here; see supporting files for full details.
 
@@ -64,12 +64,12 @@ gem install zsteg
 
 ## When to Pivot
 
-- If you recover an encrypted blob and the hard part becomes RSA, AES, or lattice work, switch to `$fieldops-ctf-crypto`.
-- If the evidence really points to malware staging, beacon config extraction, or packed samples, switch to `$fieldops-ctf-malware`.
-- If the artifact is a web app backup or API dump and the remaining problem is application logic, switch to `$fieldops-ctf-web`.
-- If the forensic evidence is really an encoding puzzle, steganography trick, or esoteric format rather than true forensics, switch to `$fieldops-ctf-misc`.
-- If you need to trace infrastructure, attribute actors, or investigate public records from forensic findings, switch to `$fieldops-ctf-osint`.
-- If the recovered artifact is a compiled binary or firmware that needs disassembly and analysis, switch to `$fieldops-ctf-reverse`.
+- If you recover an encrypted blob and the hard part becomes RSA, AES, or lattice work, switch to the `fieldops-ctf-crypto` skill.
+- If the evidence really points to malware staging, beacon config extraction, or packed samples, switch to the `fieldops-ctf-malware` skill.
+- If the artifact is a web app backup or API dump and the remaining problem is application logic, switch to the `fieldops-ctf-web` skill.
+- If the forensic evidence is really an encoding puzzle, steganography trick, or esoteric format rather than true forensics, switch to the `fieldops-ctf-misc` skill.
+- If you need to trace infrastructure, attribute actors, or investigate public records from forensic findings, switch to the `fieldops-ctf-osint` skill.
+- If the recovered artifact is a compiled binary or firmware that needs disassembly and analysis, switch to the `fieldops-ctf-reverse` skill.
 
 ## Quick Start Commands
 

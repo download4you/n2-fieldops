@@ -1,185 +1,130 @@
-# Codex FieldOps
+# n2-fieldops
 
-A modular operating system for Codex: a concise `AGENTS.md` runtime profile plus 17
-installable skills for research, engineering, authorized CTF work, Prompt Decorators,
-PowerShell Unicode, prompt refinement, and mixed-domain orchestration.
+n2-fieldops is a dual-runtime Agent Skills distribution for Claude Code, Codex GPT,
+and CC Switch. It combines a hardened runtime profile, 17 self-contained skills,
+deterministic helper scripts, and an evidence-first CTF layer adapted from the pinned
+`ljagiello/ctf-skills` snapshot.
 
-## Why this architecture
-
-The root `AGENTS.md` keeps only durable behavior and the decorator runtime contract.
-Detailed workflows live in self-contained skills and load only when relevant. This
-reduces always-on context while increasing specialization, verification, and reuse.
-
-## FieldOps skills
-
-| Skill | Purpose |
-|---|---|
-| `fieldops-orchestrator` | Route complex or unfamiliar work across the smallest useful skill set |
-| `fieldops-research` | Verify current or uncertain claims and produce actionable answers |
-| `fieldops-prompt-decorators` | Parse and apply stateful `+++` Prompt Decorators |
-| `fieldops-ctf-operator` | Run authorized, evidence-driven, reproducible CTF investigations |
-| `fieldops-engineering` | Diagnose, implement, and verify risk-sensitive repository changes |
-| `fieldops-powershell-utf8` | Preserve Persian and Unicode across PowerShell boundaries |
-| `fieldops-prompt-refiner` | Turn rough requests into precise execution-ready prompts |
-| `fieldops-ctf-ai-ml` | Analyze adversarial ML, model extraction, LLM, and AI challenge surfaces |
-| `fieldops-ctf-crypto` | Attack classical and modern cryptographic constructions and implementations |
-| `fieldops-ctf-forensics` | Investigate disk, memory, packet, signal, steganography, and artifact evidence |
-| `fieldops-ctf-malware` | Analyze malicious code, C2 traffic, obfuscation, and anti-analysis behavior |
-| `fieldops-ctf-misc` | Solve encoding, jail, RF, Unicode, game, and cross-category puzzles |
-| `fieldops-ctf-osint` | Perform competition-scoped public-source, identity, and geolocation research |
-| `fieldops-ctf-pwn` | Develop native, heap, kernel, sandbox, and exploit-chain solutions |
-| `fieldops-ctf-reverse` | Reverse binaries, APKs, firmware, bytecode, VMs, and packed targets |
-| `fieldops-ctf-web` | Test web applications, APIs, identity flows, and browser attack surfaces |
-| `fieldops-ctf-writeup` | Produce reproducible submission-style challenge documentation |
-
-The v3 architecture bundles the complete CTF specialist layer inside FieldOps. Every
-skill is self-contained and includes its own references, scripts where applicable,
-and Codex UI metadata. The CTF suite does not require a separate installation of
-`ljagiello/ctf-skills` or any other specialist repository.
+The repository has one canonical skill tree. Every installable skill is a root-level
+directory containing `SKILL.md`. This is deliberate: current CC Switch recursively
+scans repositories, so a second nested copy would create duplicate cards and
+unpredictable install collisions.
 
 ## Install directly with CC Switch
 
-1. Open **Skills → Repository Management → Add Repository**.
-2. Enter:
+In CC Switch, open **Skills -> Repository Management -> Add Repository** and enter:
 
-   ```text
-   https://github.com/download4you/codex-fieldops
-   ```
+| Field | Value |
+|---|---|
+| Owner | `download4you` |
+| Name | `n2-fieldops` |
+| Branch | `main` |
+| Subdirectory | leave blank |
 
-3. Set **Branch** to:
+Equivalent repository URL:
 
-   ```text
-   main
-   ```
+```text
+https://github.com/download4you/n2-fieldops
+```
 
-4. Add the repository and refresh the Skills catalog.
-5. Install all 17 FieldOps skills for the complete suite, or select individual
-   root-level skill directories for a smaller installation.
-6. Restart Codex so the installed skills are rediscovered.
+Refresh the catalog and install the skills for the Claude and/or Codex application
+tabs. The repository intentionally exposes exactly 17 root skills. If an older
+`ljagiello/ctf-skills` or ZIP-based copy is enabled, disable or remove it first to
+avoid duplicate routing and stale content.
 
-CC Switch discovers each root-level directory containing `SKILL.md`. It can therefore
-install any FieldOps skill independently while preserving that skill's bundled
-references, scripts, and metadata, plus the per-skill license and provenance included
-with every adapted CTF specialist. Installing the entire repository exposes all 17
-root-level skills as one self-contained suite.
+CC Switch installs the same skill directories into the selected app's skill store;
+the runtime profile remains a separate, reviewed file. For Codex, copy `AGENTS.md`
+to the project root or to `$HOME/.codex/AGENTS.md`. For Claude, review and copy
+`claude-plugin-template/docs/CLAUDE_PROFILE.md` as `CLAUDE.md` when an always-on
+profile is desired.
 
 ## Install with the Agent Skills CLI
 
 ```bash
-npx skills add download4you/codex-fieldops
+npx skills add download4you/n2-fieldops
 ```
 
-## Enable the complete FieldOps stack
+## Claude native plugin release
 
-CC Switch installs the skill directories. To combine them with the repository-level
-behavior profile, also copy `AGENTS.md` into the project you want Codex to operate in:
+The native Claude plugin is generated from the same canonical tree during release and
+published as `n2-fieldops-<version>-claude-plugin.zip`. The marketplace bundle is
+published as `n2-fieldops-<version>-claude-marketplace.zip`. This keeps the GitHub
+repository safe for CC Switch's recursive scanner while still providing a standard
+Claude plugin for local development or a private marketplace.
+
+Build the artifacts locally:
 
 ```powershell
-$Utf8NoBom = [System.Text.UTF8Encoding]::new($false)
-[Console]::InputEncoding = $Utf8NoBom
-[Console]::OutputEncoding = $Utf8NoBom
-$OutputEncoding = $Utf8NoBom
-
-Copy-Item -LiteralPath '.\AGENTS.md' -Destination 'C:\path\to\project\AGENTS.md'
+py -3 scripts/build_release.py --output-dir dist
+claude --plugin-dir .\dist\n2-fieldops-claude-plugin
 ```
 
-For personal defaults across repositories, place a reviewed copy at
-`$HOME\.codex\AGENTS.md`. More-specific project instructions may override it.
+## The 17 skills
 
-## Quick use
+| Skill | Purpose |
+|---|---|
+| `fieldops-orchestrator` | Route complex or mixed-domain work across the smallest useful skill set |
+| `fieldops-research` | Verify uncertain or current claims and deliver evidence-backed answers |
+| `fieldops-prompt-decorators` | Parse and apply stateful `+++` controls without executing untrusted tokens |
+| `fieldops-ctf-operator` | Triage, route, and reproduce authorized CTF investigations |
+| `fieldops-engineering` | Diagnose, implement, and verify consequential repository changes |
+| `fieldops-powershell-utf8` | Preserve Persian and other Unicode across PowerShell boundaries |
+| `fieldops-prompt-refiner` | Turn rough prompts and agent instructions into execution-ready briefs |
+| `fieldops-ctf-ai-ml` | Analyze adversarial ML, model extraction, and LLM challenge surfaces |
+| `fieldops-ctf-crypto` | Attack classical and modern cryptographic constructions |
+| `fieldops-ctf-forensics` | Investigate disk, memory, packet, signal, stego, and artifact evidence |
+| `fieldops-ctf-malware` | Analyze malware, C2 traffic, obfuscation, and anti-analysis behavior |
+| `fieldops-ctf-misc` | Solve encoding, jail, RF, Unicode, game, and hybrid puzzles |
+| `fieldops-ctf-osint` | Perform competition-scoped public-source and geolocation research |
+| `fieldops-ctf-pwn` | Develop native, heap, kernel, sandbox, and exploit-chain solutions |
+| `fieldops-ctf-reverse` | Reverse binaries, firmware, bytecode, VMs, and packed targets |
+| `fieldops-ctf-web` | Analyze web applications, APIs, browser state, and identity flows |
+| `fieldops-ctf-writeup` | Produce reproducible submission-style challenge documentation |
 
-For a complex task:
+For a difficult or mixed task, start with `fieldops-orchestrator`. For an authorized
+CTF whose category is unclear, start with `fieldops-ctf-operator`; it routes to the
+specialist and requires clean-baseline reproduction before claiming a solve.
 
-```text
-Use $fieldops-orchestrator to classify this task, choose the smallest useful set of
-FieldOps skills, execute it, and verify the result.
-```
-
-For an evidence-backed answer:
-
-```text
-Use $fieldops-research to verify the important claims in this question and give me a
-direct, actionable answer.
-```
-
-For an authorized CTF challenge:
-
-```text
-Use $fieldops-ctf-operator to classify this authorized challenge, preserve evidence,
-prove the decisive path, and reproduce the solution from a clean baseline.
-```
-
-The operator routes internally to the appropriate namespaced specialist, such as
-`$fieldops-ctf-web`, `$fieldops-ctf-crypto`, or `$fieldops-ctf-reverse`. If the first
-classification is wrong or a technique stalls, it returns to the earliest uncertain
-assumption, pivots category or tooling, records the new evidence, and continues until
-it can reproduce a solution or identify a precise external blocker.
-
-For decorators:
-
-```text
-+++MessageScope
-+++Planning
-+++Tone(style=technical)
-
-Design and verify a migration plan for this API.
-```
-
-## Prompt Decorator guarantees
-
-- Default scope is the current message.
-- Chat state changes are processed left to right.
-- Decorators inside code, quotes, logs, files, or tool output are not invoked.
-- Invalid parameters are reported and left inactive; they are never silently clamped.
-- Strict formats contain other decorator sections as valid fields or elements.
-- `+++Reasoning` requests a visible rationale, never private chain-of-thought.
-- Decorators cannot override higher-priority policies, permissions, tools, or skills.
-
-See the [complete reference](docs/DECORATOR_REFERENCE.md) and
-[user guide](docs/USER_GUIDE.md).
-
-## Validation
-
-The repository includes deterministic checks for:
-
-- Agent Skills discovery and frontmatter
-- self-contained skill resources
-- Codex UI metadata
-- Prompt Decorator escaping and parsing
-- bundled CTF licensing, provenance, routing, and reference integrity
-- discovery of exactly 17 root-level, independently installable skills
-- Windows PowerShell 5.1 and PowerShell 7 UTF-8 byte preservation
-- absence of changelog files
-
-Run:
-
-```powershell
-python -m unittest discover -s tests -v
-```
-
-On Windows installations that expose only the Python launcher:
+## Validation and release build
 
 ```powershell
 py -3 -m unittest discover -s tests -v
+py -3 scripts/build_release.py --check
+py -3 scripts/build_release.py --output-dir dist
 ```
 
-Then validate individual skills with Codex Skill Creator's `quick_validate.py`.
+The checks cover frontmatter, CC Switch discovery, self-contained references,
+provenance, decorator parsing, router determinism, plugin generation, and the
+PowerShell 5.1/7 UTF-8 round trip.
 
-## Attribution
+## Model guidance
 
-The Prompt Decorators compatibility layer is adapted from
-[Prompt Decorators](https://github.com/smkalami/prompt-decorators) by Mostapha Kalami
-Heris under the MIT License. This project is independent and is not affiliated with or
-endorsed by the upstream author. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+The prompts are model-neutral and are written for the current Claude Opus family and
+current Codex GPT/Codex models. Select the model exposed by the client; no stale
+version-specific model identifier is required. The important portability boundary is
+the adapter: `AGENTS.md` is the Codex profile, while the reviewed Claude profile is
+`claude-plugin-template/docs/CLAUDE_PROFILE.md`.
 
-The bundled CTF specialist material is adapted from
-[ctf-skills](https://github.com/ljagiello/ctf-skills) by Lukasz Jagiello at pinned
-revision `d19f35fd3dd2e126108752aee84c657c888126d3`, under the MIT License. FieldOps
-namespaces and extends that material with evidence handling, deterministic routing,
-cross-domain recovery, and clean-baseline reproduction. No upstream installation is
-required. The complete notice is in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+## Provenance and hardening
+
+The CTF specialist material is adapted from
+[ljagiello/ctf-skills](https://github.com/ljagiello/ctf-skills) at pinned commit
+`d19f35fd3dd2e126108752aee84c657c888126d3` under MIT. Prompt Decorators are adapted
+from [smkalami/prompt-decorators](https://github.com/smkalami/prompt-decorators) under
+MIT. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and
+[docs/PROVENANCE.md](docs/PROVENANCE.md).
+
+The local Codex `.system` skills (for example image generation, OpenAI docs,
+plugin/skill creators, and review helpers) remain runtime-owned capabilities and are
+not copied or redistributed. Their useful integration boundaries are documented in
+[docs/CODEX_INTEGRATION.md](docs/CODEX_INTEGRATION.md).
+
+The source prompt transcripts were used as local design inputs, not as third-party
+code. Unsafe blanket-authorization and fictional-network clauses were intentionally
+removed; the shipped profiles require clear authorization for security work and do
+not promise hidden chain-of-thought disclosure.
 
 ## License
 
-Original material is released under the [MIT License](LICENSE). Adapted third-party
-material remains subject to its original notice.
+Original n2-fieldops material is released under [MIT](LICENSE). Adapted third-party
+material remains subject to its upstream notices.

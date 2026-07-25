@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-ai-ml
-description: Provides AI and machine learning techniques for CTF challenges. Use when attacking ML models, crafting adversarial examples, performing model extraction, prompt injection, membership inference, training data poisoning, fine-tuning manipulation, neural network analysis, LoRA adapter exploitation, LLM jailbreaking, or solving AI-related puzzles.
+description: "Applies AI and machine learning attack techniques to authorized CTF challenges: model weight analysis and perturbation-negation, adversarial examples (FGSM, PGD, C&W), model extraction and inversion, membership inference, data poisoning and backdoor detection, LoRA adapter merging, and LLM prompt-injection and jailbreak testing. Use when a challenge ships a model or weights file (.pt, .safetensors, ONNX, a HuggingFace directory, or a LoRA adapter), exposes an ML or LLM inference endpoint, or asks to craft adversarial inputs, extract or invert a model, run membership inference, poison or backdoor training data, or test an LLM's prompt-injection and jailbreak resistance."
 ---
 
 
@@ -13,9 +13,9 @@ description: Provides AI and machine learning techniques for CTF challenges. Use
 - Begin with passive inspection and runtime evidence. Confirm tool availability before installing anything, using external services, or uploading artifacts.
 - Maintain a compact evidence ledger: observation, source, hypothesis, discriminating test, result, and next uncertainty.
 - Prove the smallest decisive primitive, change one variable per validation, and record negative evidence to avoid equivalent retries.
-- Route by the current blocker. Pivot to another bundled `$fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
+- Route by the current blocker. Pivot to another bundled `fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
 - If a documented technique does not fit, derive the transform or trust boundary from observed behavior, build the smallest local experiment, and return to the earliest unsupported assumption when it fails.
-- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `$fieldops-ctf-writeup` for a final competition handoff.
+- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `fieldops-ctf-writeup` for a final competition handoff.
 
 Quick reference for AI/ML CTF challenges. Each technique has a one-liner here; see supporting files for full details.
 
@@ -46,9 +46,9 @@ brew install python@3
 
 ## When to Pivot
 
-- If the challenge becomes pure math, lattice reduction, or number theory with no ML component, switch to `$fieldops-ctf-crypto`.
-- If the task is reverse engineering a compiled ML model binary (ONNX loader, TensorRT engine, custom inference binary), switch to `$fieldops-ctf-reverse`.
-- If the challenge is a game or puzzle that merely uses ML as a wrapper (e.g., Python jail inside a chatbot), switch to `$fieldops-ctf-misc`.
+- If the challenge becomes pure math, lattice reduction, or number theory with no ML component, switch to `fieldops-ctf-crypto`.
+- If the task is reverse engineering a compiled ML model binary (ONNX loader, TensorRT engine, custom inference binary), switch to `fieldops-ctf-reverse`.
+- If the challenge is a game or puzzle that merely uses ML as a wrapper (e.g., Python jail inside a chatbot), switch to `fieldops-ctf-misc`.
 
 ## Quick Start Commands
 

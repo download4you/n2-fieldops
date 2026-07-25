@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-crypto
-description: Provides cryptography attack techniques for CTF challenges. Use when attacking encryption, hashing, signatures, ZKP, PRNG, or mathematical crypto problems involving RSA, AES, ECC, lattices, LWE, CVP, number theory, Coppersmith, Pollard, Wiener, padding oracle, GCM, key derivation, or stream/block cipher weaknesses.
+description: Provides cryptography attack techniques and cryptanalysis workflows for authorized CTF challenges, spanning classical ciphers, modern block and stream ciphers, RSA, ECC, PRNGs, lattices, ZKPs, and hashing. Use when attacking or breaking encryption, decrypting a ciphertext, recovering or forging a key, MAC, or signature, or solving a crypto CTF challenge involving RSA, AES, ECC, DSA/ECDSA, lattices, LWE, CVP, number theory, Coppersmith, Pollard, Wiener, padding oracle, AES-GCM nonce reuse, LFSR/MT19937/LCG PRNGs, hash length extension, or stream/block cipher weaknesses.
 ---
 
 
@@ -13,9 +13,9 @@ description: Provides cryptography attack techniques for CTF challenges. Use whe
 - Begin with passive inspection and runtime evidence. Confirm tool availability before installing anything, using external services, or uploading artifacts.
 - Maintain a compact evidence ledger: observation, source, hypothesis, discriminating test, result, and next uncertainty.
 - Prove the smallest decisive primitive, change one variable per validation, and record negative evidence to avoid equivalent retries.
-- Route by the current blocker. Pivot to another bundled `$fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
+- Route by the current blocker. Pivot to another bundled `fieldops-ctf-*` specialist skill without discarding the evidence ledger when the problem crosses domains.
 - If a documented technique does not fit, derive the transform or trust boundary from observed behavior, build the smallest local experiment, and return to the earliest unsupported assumption when it fails.
-- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `$fieldops-ctf-writeup` for a final competition handoff.
+- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use the `fieldops-ctf-writeup` skill for a final competition handoff.
 
 Quick reference for crypto CTF challenges. Each technique has a one-liner here; see supporting files for full details with code.
 
@@ -65,11 +65,11 @@ brew install hashcat
 
 ## When to Pivot
 
-- If the real blocker is understanding a binary, obfuscated client, or weird VM, switch to `$fieldops-ctf-reverse`.
-- If the challenge is mostly packet carving, disk recovery, or stego extraction before any decryption starts, switch to `$fieldops-ctf-forensics`.
-- If the task is just implementing an exploit against a vulnerable network service after the crypto part is solved, switch to `$fieldops-ctf-pwn` or `$fieldops-ctf-web`.
-- If the crypto challenge involves adversarial ML, model extraction, or neural-network-based ciphers, switch to `$fieldops-ctf-ai-ml`.
-- If the challenge is really an encoding puzzle, esoteric cipher, or polyglot trick rather than true cryptanalysis, switch to `$fieldops-ctf-misc`.
+- If the real blocker is understanding a binary, obfuscated client, or weird VM, switch to the `fieldops-ctf-reverse` skill.
+- If the challenge is mostly packet carving, disk recovery, or stego extraction before any decryption starts, switch to the `fieldops-ctf-forensics` skill.
+- If the task is just implementing an exploit against a vulnerable network service after the crypto part is solved, switch to the `fieldops-ctf-pwn` or `fieldops-ctf-web` skill.
+- If the crypto challenge involves adversarial ML, model extraction, or neural-network-based ciphers, switch to the `fieldops-ctf-ai-ml` skill.
+- If the challenge is really an encoding puzzle, esoteric cipher, or polyglot trick rather than true cryptanalysis, switch to the `fieldops-ctf-misc` skill.
 
 ## Quick Start Commands
 

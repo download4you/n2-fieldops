@@ -1,3 +1,4 @@
+import json
 import re
 import unittest
 from pathlib import Path
@@ -101,17 +102,52 @@ class RepositoryLayoutTests(unittest.TestCase):
         discovered = {path.parent.name for path in ROOT.glob("*/SKILL.md") if path.is_file()}
         self.assertEqual(discovered, SKILLS)
         self.assertEqual(len(discovered), 17)
+        nested = []
+        for path in ROOT.rglob("SKILL.md"):
+            if path.parent.parent != ROOT and ".git" not in path.parts and "dist" not in path.parts:
+                nested.append(path)
+        self.assertEqual(nested, [], "CC Switch would discover duplicate nested skills")
+
+    def test_release_metadata_is_synchronized(self):
+        version = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
+        self.assertRegex(version, r"^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$")
+        manifest = json.loads(
+            (ROOT / "claude-plugin-template" / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8")
+        )
+        marketplace = json.loads(
+            (ROOT / "claude-plugin-template" / "marketplace.template.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(manifest["version"], version)
+        self.assertEqual(marketplace["version"], version)
+        self.assertEqual(marketplace["plugins"][0]["version"], version)
+        self.assertTrue((ROOT / "docs" / f"RELEASE_NOTES_{version}.md").is_file())
+        self.assertEqual(list((ROOT / "claude-plugin-template").rglob("SKILL.md")), [])
 
     def test_skill_frontmatter_and_metadata(self):
         for name in SKILLS:
             with self.subTest(skill=name):
                 skill_dir = ROOT / name
-                values = frontmatter(skill_dir / "SKILL.md")
-                self.assertEqual(set(values), {"name", "description"})
+                skill_path = skill_dir / "SKILL.md"
+                raw_frontmatter = re.match(
+                    r"\A---\s*\n(.*?)\n---\s*\n",
+                    skill_path.read_text(encoding="utf-8"),
+                    re.DOTALL,
+                ).group(1)
+                keys_in_order = [line.split(":", 1)[0].strip() for line in raw_frontmatter.splitlines() if ":" in line]
+                self.assertEqual(len(keys_in_order), len(set(keys_in_order)), "duplicate YAML frontmatter key")
+                values = frontmatter(skill_path)
+                keys = set(values)
+                self.assertEqual(keys, {"name", "description"})
                 self.assertEqual(values["name"], name)
                 self.assertTrue(values["description"])
                 metadata = (skill_dir / "agents" / "openai.yaml").read_text(encoding="utf-8")
                 self.assertIn(f"${name}", metadata)
+
+    def test_canonical_skill_prose_is_runtime_neutral(self):
+        for name in SKILLS:
+            for markdown in (ROOT / name).rglob("*.md"):
+                with self.subTest(skill=name, file=markdown.name):
+                    self.assertNotIn("$fieldops", markdown.read_text(encoding="utf-8"))
 
     def test_bundled_ctf_provenance_and_complete_manifest(self):
         reference_license = (ROOT / "fieldops-ctf-ai-ml" / "LICENSE").read_bytes()

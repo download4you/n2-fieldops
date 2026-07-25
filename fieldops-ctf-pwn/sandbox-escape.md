@@ -18,7 +18,7 @@
 
 ## Python Sandbox Escape
 
-Python jail/sandbox escape techniques (AST bypass, audit hook bypass, MRO-based builtin recovery, decorator chains, restricted charset tricks, and more) are covered comprehensively in the `fieldops-ctf-misc` skill — invoke `$fieldops-ctf-misc` for pyjail techniques.
+Python jail/sandbox escape techniques (AST bypass, audit hook bypass, MRO-based builtin recovery, decorator chains, restricted charset tricks, and more) are covered comprehensively in the `fieldops-ctf-misc` skill — invoke `fieldops-ctf-misc` for pyjail techniques.
 
 ## VM Exploitation (Custom Bytecode)
 

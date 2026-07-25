@@ -1,6 +1,6 @@
 ---
 name: fieldops-powershell-utf8
-description: Write, review, and repair PowerShell that must preserve Persian/Farsi or other Unicode across console input, console output, native-process pipelines, and file I/O. Use for mojibake, BOM requirements, multilingual automation, or PowerShell 5.1 versus 7 compatibility. Do not trigger when encoding is irrelevant.
+description: Writes, reviews, and repairs PowerShell so Persian/Farsi and other Unicode text survives console input, console output, native-process pipelines, and file I/O. Use when text turns into mojibake or question-mark boxes, when a UTF-8 BOM must be added or removed, for multilingual or non-ASCII automation, or when a script behaves differently under Windows PowerShell 5.1 versus PowerShell 7. Trigger keywords include mojibake, garbled/broken characters, UTF-8, BOM, encoding, chcp/code page, Get-Content/Out-File/Set-Content encoding, and Persian/Farsi/Unicode output. Skip when encoding is irrelevant.
 ---
 
 # PowerShell UTF-8

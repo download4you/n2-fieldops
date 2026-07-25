@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-misc
-description: Provides miscellaneous CTF challenge techniques for problems that do not cleanly fit the main categories. Use for encoding puzzles, pyjails, bash jails, RF/SDR, DNS oddities, unicode tricks, esoteric languages, QR or audio puzzles, constraint solving, game theory, unusual sandbox escapes, and hybrid logic puzzles. Prefer a more specific skill first when the challenge is mainly web, pwn, reverse, forensics, malware, OSINT, or crypto. Treat this as the fallback skill for genuine cross-category or edge-case challenges, not the default starting point.
+description: Provides miscellaneous CTF techniques for problems that do not cleanly fit the main categories. Use when a CTF challenge involves encoding or esolang puzzles, Python or bash jails and sandbox escapes, RF/SDR/IQ signals, DNS oddities, unicode steganography, QR or audio/spectrogram puzzles, Z3 or constraint solving, game or VM logic exploits, or Linux privilege escalation, or when a challenge is simply tagged misc or spans several categories. Prefer a more specific skill first when the challenge is mainly web, pwn, reverse, forensics, malware, OSINT, or crypto; treat this as the fallback for genuine cross-category or edge-case challenges, not the default starting point.
 ---
 
 
@@ -13,9 +13,9 @@ description: Provides miscellaneous CTF challenge techniques for problems that d
 - Begin with passive inspection and runtime evidence. Confirm tool availability before installing anything, using external services, or uploading artifacts.
 - Maintain a compact evidence ledger: observation, source, hypothesis, discriminating test, result, and next uncertainty.
 - Prove the smallest decisive primitive, change one variable per validation, and record negative evidence to avoid equivalent retries.
-- Route by the current blocker. Pivot to another bundled `$fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
+- Route by the current blocker. Pivot to another bundled `fieldops-ctf-*` specialist skill without discarding the evidence ledger when the problem crosses domains.
 - If a documented technique does not fit, derive the transform or trust boundary from observed behavior, build the smallest local experiment, and return to the earliest unsupported assumption when it fails.
-- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `$fieldops-ctf-writeup` for a final competition handoff.
+- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use the `fieldops-ctf-writeup` skill for a final competition handoff.
 
 Quick reference for miscellaneous CTF challenges. Each technique has a one-liner here; see supporting files for full details.
 
@@ -58,10 +58,10 @@ brew install ffmpeg qrencode
 
 ## When to Pivot
 
-- If the puzzle is actually centered on cryptography or number theory, switch to `$fieldops-ctf-crypto`.
-- If the challenge is a real binary exploit instead of a jail, toy VM, or encoding problem, switch to `$fieldops-ctf-pwn` or `$fieldops-ctf-reverse`.
-- If the input is mostly files, images, audio, or packet captures that need recovery work first, switch to `$fieldops-ctf-forensics`.
-- For ML/AI techniques (model attacks, adversarial examples, LLM jailbreaking), see `$fieldops-ctf-ai-ml`.
+- If the puzzle is actually centered on cryptography or number theory, switch to the `fieldops-ctf-crypto` skill.
+- If the challenge is a real binary exploit instead of a jail, toy VM, or encoding problem, switch to the `fieldops-ctf-pwn` or `fieldops-ctf-reverse` skill.
+- If the input is mostly files, images, audio, or packet captures that need recovery work first, switch to the `fieldops-ctf-forensics` skill.
+- For ML/AI techniques (model attacks, adversarial examples, LLM jailbreaking), see the `fieldops-ctf-ai-ml` skill.
 
 ## Quick Start Commands
 
@@ -279,7 +279,7 @@ new_data = sha.extend(b'extension', b'original_message', len_secret, known_hash_
 
 ## Discord API Enumeration (0xFun 2026)
 
-Flags hidden in Discord metadata (roles, animated emoji, embeds). Invoke `$fieldops-ctf-osint` for Discord API enumeration technique and code (see social-media.md in fieldops-ctf-osint).
+Flags hidden in Discord metadata (roles, animated emoji, embeds). Invoke the `fieldops-ctf-osint` skill for Discord API enumeration technique and code (see social-media.md in fieldops-ctf-osint).
 
 ---
 

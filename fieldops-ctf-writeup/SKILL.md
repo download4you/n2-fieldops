@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-writeup
-description: Generates a single standardized submission-style CTF writeup for competition handoff and organizer review. Use after solving a CTF challenge to document the solution steps, tools used, and lessons learned in a structured format.
+description: Generates one concise, standardized submission-style writeup for a solved CTF challenge, ready for competition handoff, teammate validation, or organizer review. Use after solving a CTF challenge when the user wants to write up or document the solve, produce a submission or competition report, or turn exploit scripts, payloads, command output, and session notes into a reproducible write-up containing metadata, a short summary, ordered solution steps, one complete solve script from challenge data to the printed flag, and the flag.
 ---
 
 
@@ -13,9 +13,9 @@ description: Generates a single standardized submission-style CTF writeup for co
 - Begin with passive inspection and runtime evidence. Confirm tool availability before installing anything, using external services, or uploading artifacts.
 - Maintain a compact evidence ledger: observation, source, hypothesis, discriminating test, result, and next uncertainty.
 - Prove the smallest decisive primitive, change one variable per validation, and record negative evidence to avoid equivalent retries.
-- Route by the current blocker. Pivot to another bundled `$fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
+- Route by the current blocker. Pivot to another bundled `fieldops-ctf-*` specialist skill without discarding the evidence ledger when the problem crosses domains.
 - If a documented technique does not fit, derive the transform or trust boundary from observed behavior, build the smallest local experiment, and return to the earliest unsupported assumption when it fails.
-- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `$fieldops-ctf-writeup` for a final competition handoff.
+- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use the `fieldops-ctf-writeup` skill for a final competition handoff.
 
 Generate a standardized submission-style CTF writeup for a solved challenge.
 

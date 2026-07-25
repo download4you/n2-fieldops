@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-pwn
-description: Provides binary exploitation techniques for CTF challenges. Use when you already have a vulnerable native target or service and need to turn memory corruption or low-level primitives into code execution or privilege escalation, such as buffer overflows, format strings, heap bugs, ROP, ret2libc, shellcode, kernel exploitation, seccomp bypass, sandbox escape, or Windows/Linux exploit chains. Do not use it when the main blocker is understanding what the binary does; use reverse engineering first. Do not use it for pure web bugs, disk or packet forensics, or standalone crypto/math challenges.
+description: Provides binary exploitation (pwn) techniques for authorized CTF challenges. Use when you already have a vulnerable native target or service and need to turn memory corruption or low-level primitives into code execution, a shell, or privilege escalation, such as buffer overflows, format strings, heap bugs (UAF, tcache poisoning, House of Orange/Apple), ROP, ret2libc, ret2csu, shellcode, stack pivots, SROP, kernel exploitation, seccomp bypass, sandbox escape, or Windows/Linux exploit chains. Do not use it when the main blocker is understanding what the binary does; use reverse engineering first. Do not use it for pure web bugs, disk or packet forensics, or standalone crypto/math challenges.
 ---
 
 
@@ -13,9 +13,9 @@ description: Provides binary exploitation techniques for CTF challenges. Use whe
 - Begin with passive inspection and runtime evidence. Confirm tool availability before installing anything, using external services, or uploading artifacts.
 - Maintain a compact evidence ledger: observation, source, hypothesis, discriminating test, result, and next uncertainty.
 - Prove the smallest decisive primitive, change one variable per validation, and record negative evidence to avoid equivalent retries.
-- Route by the current blocker. Pivot to another bundled `$fieldops-ctf-*` specialist without discarding the evidence ledger when the problem crosses domains.
+- Route by the current blocker. Pivot to another bundled `fieldops-ctf-*` specialist skill without discarding the evidence ledger when the problem crosses domains.
 - If a documented technique does not fit, derive the transform or trust boundary from observed behavior, build the smallest local experiment, and return to the earliest unsupported assumption when it fails.
-- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use `$fieldops-ctf-writeup` for a final competition handoff.
+- Reproduce the minimal solve chain from a reset or clean baseline before claiming success. Use the `fieldops-ctf-writeup` skill for a final competition handoff.
 
 Quick reference for binary exploitation (pwn) CTF challenges. Each technique has a one-liner here; see supporting files for full details.
 
@@ -70,10 +70,10 @@ gem install one_gadget seccomp-tools
 
 ## When to Pivot
 
-- If you do not yet understand what the binary does, switch to `$fieldops-ctf-reverse` before trying to exploit it.
-- If the service is really a restricted shell, encoding puzzle, or sandbox language challenge, switch to `$fieldops-ctf-misc`.
-- If the exploit path depends on a web endpoint, session bug, or upload primitive more than memory corruption, switch to `$fieldops-ctf-web`.
-- If the vulnerability requires breaking a cryptographic primitive before exploitation, switch to `$fieldops-ctf-crypto`.
+- If you do not yet understand what the binary does, switch to the `fieldops-ctf-reverse` skill before trying to exploit it.
+- If the service is really a restricted shell, encoding puzzle, or sandbox language challenge, switch to the `fieldops-ctf-misc` skill.
+- If the exploit path depends on a web endpoint, session bug, or upload primitive more than memory corruption, switch to the `fieldops-ctf-web` skill.
+- If the vulnerability requires breaking a cryptographic primitive before exploitation, switch to the `fieldops-ctf-crypto` skill.
 
 ## Quick Start Commands
 

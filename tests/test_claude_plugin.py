@@ -128,7 +128,7 @@ class ClaudeDistributionTests(unittest.TestCase):
             shutil.copytree(
                 ROOT,
                 checkout,
-                ignore=shutil.ignore_patterns(".git", "dist", "__pycache__", "*.pyc"),
+                ignore=shutil.ignore_patterns("dist", "__pycache__", "*.pyc"),
             )
             text_suffixes = {".json", ".md", ".ps1", ".py", ".txt", ".yaml", ".yml"}
             text_names = {".gitattributes", ".gitignore", "LICENSE", "VERSION"}
@@ -154,6 +154,12 @@ class ClaudeDistributionTests(unittest.TestCase):
                     expected = hashlib.sha256((baseline / filename).read_bytes()).digest()
                     actual = hashlib.sha256((output / filename).read_bytes()).digest()
                     self.assertEqual(actual, expected)
+
+    def test_source_archive_excludes_ignored_checkout_files(self):
+        output = self.build()
+        source_name = next(output.glob("*-source.zip"))
+        with zipfile.ZipFile(source_name) as archive:
+            self.assertFalse(any("/.claude/" in name for name in archive.namelist()))
 
 
 if __name__ == "__main__":

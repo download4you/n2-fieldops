@@ -9,6 +9,7 @@ import json
 import re
 import shutil
 import stat
+import subprocess
 import sys
 import zipfile
 from pathlib import Path
@@ -77,9 +78,36 @@ def canonical_file_bytes(path: Path) -> bytes:
     return data
 
 
-def sorted_tree(source: Path) -> list[Path]:
+def git_tracked_paths(source: Path) -> set[str]:
+    if source.resolve() != ROOT.resolve() or not (ROOT / ".git").exists():
+        raise ValueError("source archive requires a Git checkout so ignored files cannot leak")
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(ROOT), "ls-files", "-z"],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+    except (OSError, subprocess.CalledProcessError) as error:
+        raise ValueError(f"unable to enumerate tracked source files: {error}") from error
+    try:
+        output = result.stdout.decode("utf-8")
+    except UnicodeDecodeError as error:
+        raise ValueError("Git returned non-UTF-8 source paths") from error
+    return {item for item in output.split("\0") if item}
+
+
+def sorted_tree(source: Path, *, tracked_only: bool = False) -> list[Path]:
+    tracked = git_tracked_paths(source) if tracked_only else None
+    paths = source.rglob("*")
+    if tracked is not None:
+        paths = (
+            path
+            for path in paths
+            if path.relative_to(source).as_posix() in tracked
+        )
     return sorted(
-        source.rglob("*"),
+        paths,
         key=lambda path: path.relative_to(source).as_posix(),
     )
 
@@ -172,8 +200,14 @@ def build_marketplace(output: Path, plugin: Path, version: str) -> Path:
     return marketplace
 
 
-def add_tree(archive: zipfile.ZipFile, source: Path, prefix: str = "") -> None:
-    for path in sorted_tree(source):
+def add_tree(
+    archive: zipfile.ZipFile,
+    source: Path,
+    prefix: str = "",
+    *,
+    tracked_only: bool = False,
+) -> None:
+    for path in sorted_tree(source, tracked_only=tracked_only):
         relative_path = path.relative_to(source)
         if (
             not path.is_file()
@@ -194,17 +228,23 @@ def add_tree(archive: zipfile.ZipFile, source: Path, prefix: str = "") -> None:
         archive.writestr(info, canonical_file_bytes(path))
 
 
-def zip_tree(source: Path, destination: Path, prefix: str) -> None:
+def zip_tree(
+    source: Path,
+    destination: Path,
+    prefix: str,
+    *,
+    tracked_only: bool = False,
+) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        add_tree(archive, source, prefix)
+        add_tree(archive, source, prefix, tracked_only=tracked_only)
 
 
 def build_archives(output: Path, version: str, plugin: Path, marketplace: Path) -> list[Path]:
     source_archive = output / f"n2-fieldops-{version}-source.zip"
     plugin_archive = output / f"n2-fieldops-{version}-claude-plugin.zip"
     marketplace_archive = output / f"n2-fieldops-{version}-claude-marketplace.zip"
-    zip_tree(ROOT, source_archive, f"n2-fieldops-{version}")
+    zip_tree(ROOT, source_archive, f"n2-fieldops-{version}", tracked_only=True)
     zip_tree(plugin, plugin_archive, "n2-fieldops-claude-plugin")
     zip_tree(marketplace, marketplace_archive, f"n2-fieldops-claude-marketplace-{version}")
     return [source_archive, plugin_archive, marketplace_archive]

@@ -126,7 +126,8 @@ not promise hidden chain-of-thought disclosure.
 
 ## Version lineage
 
-The n2-fieldops product line starts at `v1.0.0`. Older `v2.x` and `v3.0.0` releases
+The n2-fieldops product line starts at `v1.0.0`; `v1.0.1` is the reproducibility and
+installation-documentation maintenance release. Older `v2.x` and `v3.0.0` releases
 visible in this repository belong to the predecessor Codex FieldOps project and are
 retained as provenance history. Use the `main` branch or GitHub's latest n2-fieldops
 release rather than selecting the numerically highest legacy tag.

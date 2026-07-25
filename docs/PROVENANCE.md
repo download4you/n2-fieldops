@@ -1,7 +1,7 @@
 # Build and provenance record
 
-This document records the inputs and transformations used for the n2-fieldops 1.0.0
-release.
+This document records the inputs and transformations used for the n2-fieldops 1.0.x
+release line, including the reproducibility patch shipped in 1.0.1.
 
 ## Inputs
 
@@ -32,6 +32,9 @@ release.
 - Added deterministic router, decorator parser, and PowerShell UTF-8 checks.
 - Added a release builder that materializes the native Claude plugin only in release
   artifacts, preventing duplicate recursive discovery by CC Switch.
+- Made release archives cross-platform reproducible by normalizing text, fixing ZIP
+  ordering/metadata, and limiting source archives to tracked Git files.
+- Updated the CC Switch installation path to the current Repository URL + Branch UI.
 - Started the renamed n2-fieldops product line at `v1.0.0`; predecessor `v2.x` and
   `v3.0.0` tags are retained as historical Codex FieldOps provenance.
 

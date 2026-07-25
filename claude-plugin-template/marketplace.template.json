@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "n2-fieldops-marketplace",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A dual-runtime FieldOps skill suite for Claude Code, Codex, and CC Switch.",
   "owner": {
     "name": "download4you",
@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "n2-fieldops",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "Evidence-driven research, engineering, Prompt Decorators, PowerShell UTF-8, and authorized CTF workflows.",
       "source": "./plugins/n2-fieldops",
       "category": "security"

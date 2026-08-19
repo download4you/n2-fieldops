@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-forensics
-description: Provides digital forensics, steganography, and signal-analysis techniques for authorized CTF challenges. Covers disk-image mounting and file carving, deleted-file and partition recovery, memory forensics with Volatility, Windows event logs (.evtx) and registry/SAM parsing, PCAP and network forensics, image/audio/video steganography, PDF analysis, USB/HID peripheral capture, hardware and side-channel signal decoding, and Bitcoin/blockchain tracing. Use when analyzing disk images, memory dumps, event logs, network captures, coredumps, cryptocurrency transactions, steganography, PDFs, Windows registry, Volatility output, PCAPs, Docker images, side-channel power traces, DTMF or SSTV audio spectrograms, packet-timing covert channels, or CD audio disc images, or when recovering deleted files, credentials, or hidden flags.
+description: Digital forensics, steganography, and signal analysis for authorized CTF challenges. Use when evidence lives in disk images, memory dumps, packet captures, event logs, side-channel signals, embedded media, or blockchain traces, and the task is to recover, reconstruct, or decode it.
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-misc
-description: Provides miscellaneous CTF techniques for problems that do not cleanly fit the main categories. Use when a CTF challenge involves encoding or esolang puzzles, Python or bash jails and sandbox escapes, RF/SDR/IQ signals, DNS oddities, unicode steganography, QR or audio/spectrogram puzzles, Z3 or constraint solving, game or VM logic exploits, or Linux privilege escalation, or when a challenge is simply tagged misc or spans several categories. Prefer a more specific skill first when the challenge is mainly web, pwn, reverse, forensics, malware, OSINT, or crypto; treat this as the fallback for genuine cross-category or edge-case challenges, not the default starting point.
+description: Cross-category CTF challenges that do not fit a single specialist. Use when a challenge is genuinely hybrid — encodings, jails, RF/SDR, game logic, Z3 or constraint solving, custom VMs, or Linux privilege escalation — and a narrower category skill is not the right starting point.
 ---
 
 

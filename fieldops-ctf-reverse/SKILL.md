@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-reverse
-description: Reverse compiled, obfuscated, packed, or virtualized targets in authorized CTF challenges. Covers ELF, PE, Mach-O, Android APKs, WASM, firmware, custom VMs and bytecode, .NET, Go, Rust, Swift, Kotlin, game clients, loaders, and anti-debug or anti-analysis logic with tools such as Ghidra, IDA, radare2, GDB, Frida, angr, Qiling, and Unicorn. Use when asked to reverse, decompile, or disassemble a binary, explain an unknown executable, solve a crackme, recover a hidden flag, unpack a protected sample, defeat anti-analysis, or inspect an .apk, .exe, .so, .dll, or .wasm. Pivot to fieldops-ctf-pwn once the vulnerability is understood and only exploitation remains; prefer web, forensics, or crypto when reversing is not the decisive blocker.
+description: Reverse engineering of compiled, packed, virtualized, or obfuscated targets for authorized CTF challenges. Use when the task is to understand, decompile, disassemble, or unpack an unknown executable across ELF, PE, Mach-O, APK, WASM, firmware, bytecode, or custom-VM targets.
 ---
 
 

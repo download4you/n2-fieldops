@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-ai-ml
-description: "Applies AI and machine learning attack techniques to authorized CTF challenges: model weight analysis and perturbation-negation, adversarial examples (FGSM, PGD, C&W), model extraction and inversion, membership inference, data poisoning and backdoor detection, LoRA adapter merging, and LLM prompt-injection and jailbreak testing. Use when a challenge ships a model or weights file (.pt, .safetensors, ONNX, a HuggingFace directory, or a LoRA adapter), exposes an ML or LLM inference endpoint, or asks to craft adversarial inputs, extract or invert a model, run membership inference, poison or backdoor training data, or test an LLM's prompt-injection and jailbreak resistance."
+description: AI and machine learning analysis for authorized CTF challenges. Use when a challenge ships a model, weights file, or inference endpoint, or asks the agent to evaluate, perturb, extract, invert, or stress-test an ML or LLM system.
 ---
 
 

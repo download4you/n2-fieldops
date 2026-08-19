@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-pwn
-description: Provides binary exploitation (pwn) techniques for authorized CTF challenges. Use when you already have a vulnerable native target or service and need to turn memory corruption or low-level primitives into code execution, a shell, or privilege escalation, such as buffer overflows, format strings, heap bugs (UAF, tcache poisoning, House of Orange/Apple), ROP, ret2libc, ret2csu, shellcode, stack pivots, SROP, kernel exploitation, seccomp bypass, sandbox escape, or Windows/Linux exploit chains. Do not use it when the main blocker is understanding what the binary does; use reverse engineering first. Do not use it for pure web bugs, disk or packet forensics, or standalone crypto/math challenges.
+description: Binary exploitation and runtime memory analysis for authorized CTF challenges. Use when the target is a vulnerable native binary, a service, a kernel image, or a sandbox and the task is to turn a memory bug or low-level primitive into code execution. See the linked technique files for the specific playbook.
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-osint
-description: Provides open source intelligence (OSINT) techniques for authorized CTF challenges, covering attribution and information-gathering from public sources. Use when investigating social media accounts (Twitter/X, Tumblr, BlueSky, Discord), geolocating images (EXIF, reverse image search, Street View, MGRS, Plus Codes), doing DNS/WHOIS recon, username enumeration, Google dorking, Wayback Machine, Shodan/Censys, Tor relay lookups, FEC filings, or identifying unknown data like hashes and coordinates.
+description: Competition-scoped open-source intelligence and geolocation. Use when a challenge depends on public sources — social media, image geolocation, DNS/WHOIS, username traces, dorking, archived pages, or registries — and the task is to attribute, locate, or identify a sandbox-internal target.
 ---
 
 

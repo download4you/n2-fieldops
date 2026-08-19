@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-operator
-description: Triages, routes, coordinates, and rigorously validates authorized capture-the-flag (CTF) investigations across web, pwn, crypto, reverse engineering, forensics, malware, OSINT, AI/ML, and miscellaneous domains, dispatching each artifact to the best-fit fieldops-ctf-* specialist skill and proving the flag reproduces from a clean baseline. Use when starting an authorized CTF challenge whose category is unknown, vague, unfamiliar, mixed, or spread across multiple artifacts; when the user is stuck, blocked, or facing conflicting evidence; when asked which CTF skill or category fits or to route or triage a challenge; or when a claimed solution must be reproduced and validated from a clean baseline.
+description: Triage, route, and validate authorized CTF investigations. Use when the category is unknown, the user is stuck, evidence conflicts, or a claimed solve must be reproduced from a clean baseline. Dispatches to the most relevant fieldops-ctf-* specialist.
 ---
 
 # CTF Field Operator

@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-crypto
-description: Provides cryptography attack techniques and cryptanalysis workflows for authorized CTF challenges, spanning classical ciphers, modern block and stream ciphers, RSA, ECC, PRNGs, lattices, ZKPs, and hashing. Use when attacking or breaking encryption, decrypting a ciphertext, recovering or forging a key, MAC, or signature, or solving a crypto CTF challenge involving RSA, AES, ECC, DSA/ECDSA, lattices, LWE, CVP, number theory, Coppersmith, Pollard, Wiener, padding oracle, AES-GCM nonce reuse, LFSR/MT19937/LCG PRNGs, hash length extension, or stream/block cipher weaknesses.
+description: Cryptographic and mathematical analysis for authorized CTF challenges. Use when a challenge involves classical ciphers, modern block or stream ciphers, RSA, ECC, DSA/ECDSA, PRNGs, lattices, zero-knowledge proofs, or number theory, and the task is to recover keys, decrypt, or break the construction.
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 name: fieldops-ctf-writeup
-description: Generates one concise, standardized submission-style writeup for a solved CTF challenge, ready for competition handoff, teammate validation, or organizer review. Use after solving a CTF challenge when the user wants to write up or document the solve, produce a submission or competition report, or turn exploit scripts, payloads, command output, and session notes into a reproducible write-up containing metadata, a short summary, ordered solution steps, one complete solve script from challenge data to the printed flag, and the flag.
+description: Generate a submission-style writeup for a solved CTF challenge. Use after a solve, when the user wants a reproducible competition report covering metadata, ordered solution steps, the solve script, and the recovered flag.
 ---
 
 

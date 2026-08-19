@@ -34,6 +34,9 @@ decorator-runtime release shipped in 1.1.0.
   `fieldops-prompt-decorators` skill, added the `+++N2` and `+++Storm`
   meta-decorators across the catalog, state machine, composition rules, docs, and
   parser, and token-optimized `AGENTS.md` (417 -> 189 lines).
+- Release 1.2.0 added first-class Kimi support: `KIMI.md` ships the same skill-based,
+  uncensored profile for the Kimi CLI (KIMI CODE identity, Persian-default language),
+  and the docs and manifests describe the multi-runtime layout.
 - Moved portable trigger guidance into each skill description and neutralized
   Codex-only skill tokens in the canonical skill prose so the same tree works in
   Claude and Codex.

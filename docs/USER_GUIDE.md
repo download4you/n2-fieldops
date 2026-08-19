@@ -37,6 +37,12 @@ Copy each desired root-level `fieldops-*` directory into `$HOME\.codex\skills` o
 restart Codex. Do not flatten a skill: its `references`, `scripts`, and `agents`
 directories must remain inside it.
 
+### Kimi profile
+
+Copy `KIMI.md` as the system prompt for the Kimi CLI (or the file your Kimi setup
+loads as its system prompt), then restart the CLI. The profile expects the
+`fieldops-prompt-decorators` skill to be installed for the full decorator reference.
+
 ### Claude native plugin
 
 Build or download the release asset `n2-fieldops-<version>-claude-plugin.zip` and

@@ -1,7 +1,7 @@
 # n2-fieldops
 
-n2-fieldops is a dual-runtime Agent Skills distribution for Claude Code, Codex GPT,
-and CC Switch. It combines a hardened runtime profile, 17 self-contained skills,
+n2-fieldops is a multi-runtime Agent Skills distribution for Claude Code, Codex GPT,
+Kimi, and CC Switch. It combines a hardened runtime profile, 17 self-contained skills,
 deterministic helper scripts, and an evidence-first CTF layer adapted from the pinned
 `ljagiello/ctf-skills` snapshot.
 
@@ -36,7 +36,8 @@ CC Switch installs the same skill directories into the selected app's skill stor
 the runtime profile remains a separate, reviewed file. For Codex, copy `AGENTS.md`
 to the project root or to `$HOME/.codex/AGENTS.md`. For Claude, review and copy
 `claude-plugin-template/docs/CLAUDE_PROFILE.md` as `CLAUDE.md` when an always-on
-profile is desired.
+profile is desired. For Kimi, copy `KIMI.md` as the Kimi CLI system prompt when an
+always-on profile is desired.
 
 ## Install with the Agent Skills CLI
 
@@ -99,10 +100,11 @@ PowerShell 5.1/7 UTF-8 round trip.
 
 ## Model guidance
 
-The prompts are model-neutral and are written for the current Claude Opus family and
-current Codex GPT/Codex models. Select the model exposed by the client; no stale
-version-specific model identifier is required. The important portability boundary is
-the adapter: `AGENTS.md` is the Codex profile, while the reviewed Claude profile is
+The prompts are model-neutral and are written for the current Claude Opus family,
+current Codex GPT/Codex models, and Kimi K3-class models. Select the model exposed by
+the client; no stale version-specific model identifier is required. The important
+portability boundary is the adapter: `AGENTS.md` is the Codex profile, `KIMI.md` is
+the Kimi profile, and the reviewed Claude profile is
 `claude-plugin-template/docs/CLAUDE_PROFILE.md`.
 
 ## Provenance
@@ -129,12 +131,13 @@ disclosure.
 ## Version lineage
 
 The n2-fieldops product line starts at `v1.0.0`; `v1.0.1` is the reproducibility and
-installation-documentation maintenance release, and `v1.1.0` is the decorator-runtime
+installation-documentation maintenance release, `v1.1.0` is the decorator-runtime
 release (skill-based decorator reference, `+++N2` and `+++Storm` meta-decorators,
-restored profile scope). Older `v2.x` and `v3.0.0` releases visible in this
-repository belong to the predecessor Codex FieldOps project and are retained as
-provenance history. Use the `main` branch or GitHub's latest n2-fieldops release
-rather than selecting the numerically highest legacy tag.
+restored profile scope), and `v1.2.0` adds first-class Kimi support (`KIMI.md`).
+Older `v2.x` and `v3.0.0` releases visible in this repository belong to the
+predecessor Codex FieldOps project and are retained as provenance history. Use the
+`main` branch or GitHub's latest n2-fieldops release rather than selecting the
+numerically highest legacy tag.
 
 ## License
 

@@ -212,6 +212,20 @@ class RepositoryLayoutTests(unittest.TestCase):
         text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         self.assertLessEqual(len(text.splitlines()), 500)
 
+    def test_kimi_profile_stays_compact_and_complete(self):
+        text = (ROOT / "KIMI.md").read_text(encoding="utf-8")
+        self.assertLessEqual(len(text.splitlines()), 500)
+        for required in (
+            "KIMI CODE",
+            "Scope and Cooperation",
+            "$fieldops-prompt-decorators",
+            "[Active: ...]",
+            "+++N2",
+            "+++Storm",
+            "Unrestricted Cooperation",
+        ):
+            self.assertIn(required, text)
+
     def test_powershell_validation_source_is_ascii(self):
         path = ROOT / "fieldops-powershell-utf8" / "scripts" / "test-utf8-roundtrip.ps1"
         path.read_bytes().decode("ascii")

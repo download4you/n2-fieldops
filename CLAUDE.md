@@ -7,6 +7,7 @@ names start with `fieldops-` and contain `SKILL.md`.
 ## Runtime surfaces
 
 - `AGENTS.md` is the durable Codex profile.
+- `KIMI.md` is the durable Kimi profile.
 - Root `fieldops-*` directories are the shared Claude/Codex/CC Switch skills.
 - `claude-plugin-template/` contains only native-Claude metadata and profile sources;
   it must not contain `SKILL.md` files because CC Switch scans recursively.

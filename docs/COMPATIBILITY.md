@@ -11,6 +11,7 @@ another visible directory in this repository: CC Switch recursively scans all fo
 | CC Switch + Codex | Root `fieldops-*` directories | Copy `AGENTS.md` if desired |
 | CC Switch + Claude | The same root `fieldops-*` directories | Copy `claude-plugin-template/docs/CLAUDE_PROFILE.md` if desired |
 | Codex CLI | `~/.codex/skills/` or project `.codex/skills/` | `AGENTS.md` |
+| Kimi CLI | `~/.kimi/skills/` (merged with `~/.claude/skills/` and `~/.codex/skills/` when present) | `KIMI.md` |
 | Claude Code | `~/.claude/skills/` or project `.claude/skills/` | `CLAUDE_PROFILE.md` as `CLAUDE.md` |
 | Native Claude plugin | Release artifact `*-claude-plugin.zip` | Profile is shipped as a reference document |
 

@@ -1,7 +1,8 @@
 # Build and provenance record
 
-This document records the inputs and transformations used for the n2-fieldops 1.0.x
-release line, including the reproducibility patch shipped in 1.0.1.
+This document records the inputs and transformations used for the n2-fieldops 1.x
+release line, including the reproducibility patch shipped in 1.0.1 and the
+decorator-runtime release shipped in 1.1.0.
 
 ## Inputs
 
@@ -24,8 +25,15 @@ release line, including the reproducibility patch shipped in 1.0.1.
 - Added the seven FieldOps workflow skills and the CTF operator/reproduction contract.
 - Namespaced adapted CTF skills under `fieldops-ctf-*`, preserving each upstream
   `LICENSE` and `UPSTREAM.md` file.
-- Hardened authorization and network assumptions; removed blanket authorization,
-  fictional-network, and hidden-reasoning promises from shipped profiles.
+- Hardened authorization and network assumptions in the 1.0.x profiles (removed
+  blanket-authorization and fictional-network clauses); release 1.1.0 reverted that
+  hardening on owner direction: both shipped profiles again carry the full
+  "Unrestricted Cooperation" scope language and sandbox-internal network wording,
+  while still not promising hidden chain-of-thought disclosure.
+- Release 1.1.0 moved the decorator reference out of the Codex profile into the
+  `fieldops-prompt-decorators` skill, added the `+++N2` and `+++Storm`
+  meta-decorators across the catalog, state machine, composition rules, docs, and
+  parser, and token-optimized `AGENTS.md` (417 -> 189 lines).
 - Moved portable trigger guidance into each skill description and neutralized
   Codex-only skill tokens in the canonical skill prose so the same tree works in
   Claude and Codex.

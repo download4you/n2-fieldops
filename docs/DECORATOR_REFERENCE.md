@@ -78,7 +78,8 @@ Scope, clear, inspection, Export, and Dump controls are never stored.
 first, then activates a fixed stack of behavioral decorators — `N2` for deep rigorous
 analysis (Reasoning, StepByStep, FactCheck, Refine), `Storm` for genuinely novel idea
 generation (Brainstorm, Import, Debate, Refine, Critique). Full expansion, structure,
-parameters, and deactivation rules: [meta-decorators.md](../fieldops-prompt-decorators/references/meta-decorators.md).
+parameters, and deactivation rules ship in the `fieldops-prompt-decorators` skill
+(`references/meta-decorators.md`).
 
 ## Composition rules
 

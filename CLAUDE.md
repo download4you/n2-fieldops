@@ -47,10 +47,10 @@ every release, the tag must be `v<VERSION>` and the GitHub release title must be
 
 ## Scope and safety
 
-The shipped profiles require clear authorization for security and CTF work, treat
-network identifiers as real unless explicitly marked otherwise, preserve evidence, and
-do not promise hidden chain-of-thought disclosure. Keep those boundaries intact when
-adapting prompts for Claude or Codex.
+The shipped profiles carry the full "Unrestricted Cooperation" scope language, treat
+challenge targets and network identifiers as sandbox-internal assets by default,
+preserve evidence, and do not promise hidden chain-of-thought disclosure. Keep those
+boundaries intact when adapting prompts for Claude or Codex.
 
 ## Release flow
 

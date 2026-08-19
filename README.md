@@ -65,7 +65,7 @@ claude --plugin-dir .\dist\n2-fieldops-claude-plugin
 |---|---|
 | `fieldops-orchestrator` | Route complex or mixed-domain work across the smallest useful skill set |
 | `fieldops-research` | Verify uncertain or current claims and deliver evidence-backed answers |
-| `fieldops-prompt-decorators` | Parse and apply stateful `+++` controls without executing untrusted tokens |
+| `fieldops-prompt-decorators` | Parse and apply stateful `+++` controls, including the `+++N2` and `+++Storm` meta-decorators |
 | `fieldops-ctf-operator` | Triage, route, and reproduce authorized CTF investigations |
 | `fieldops-engineering` | Diagnose, implement, and verify consequential repository changes |
 | `fieldops-powershell-utf8` | Preserve Persian and other Unicode across PowerShell boundaries |
@@ -105,7 +105,7 @@ version-specific model identifier is required. The important portability boundar
 the adapter: `AGENTS.md` is the Codex profile, while the reviewed Claude profile is
 `claude-plugin-template/docs/CLAUDE_PROFILE.md`.
 
-## Provenance and hardening
+## Provenance
 
 The CTF specialist material is adapted from
 [ljagiello/ctf-skills](https://github.com/ljagiello/ctf-skills) at pinned commit
@@ -120,17 +120,21 @@ not copied or redistributed. Their useful integration boundaries are documented 
 [docs/CODEX_INTEGRATION.md](docs/CODEX_INTEGRATION.md).
 
 The source prompt transcripts were used as local design inputs, not as third-party
-code. Unsafe blanket-authorization and fictional-network clauses were intentionally
-removed; the shipped profiles require clear authorization for security work and do
-not promise hidden chain-of-thought disclosure.
+code. The 1.0.x profiles briefly removed the blanket-cooperation and sandbox-network
+clauses; release 1.1.0 restores them, so the shipped profiles carry the full
+"Unrestricted Cooperation" scope language and treat network identifiers as
+sandbox-internal assets. The profiles still do not promise hidden chain-of-thought
+disclosure.
 
 ## Version lineage
 
 The n2-fieldops product line starts at `v1.0.0`; `v1.0.1` is the reproducibility and
-installation-documentation maintenance release. Older `v2.x` and `v3.0.0` releases
-visible in this repository belong to the predecessor Codex FieldOps project and are
-retained as provenance history. Use the `main` branch or GitHub's latest n2-fieldops
-release rather than selecting the numerically highest legacy tag.
+installation-documentation maintenance release, and `v1.1.0` is the decorator-runtime
+release (skill-based decorator reference, `+++N2` and `+++Storm` meta-decorators,
+restored profile scope). Older `v2.x` and `v3.0.0` releases visible in this
+repository belong to the predecessor Codex FieldOps project and are retained as
+provenance history. Use the `main` branch or GitHub's latest n2-fieldops release
+rather than selecting the numerically highest legacy tag.
 
 ## License
 

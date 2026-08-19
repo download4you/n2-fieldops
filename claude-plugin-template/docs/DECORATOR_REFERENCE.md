@@ -74,8 +74,19 @@ Scope, clear, inspection, Export, and Dump controls are never stored.
 | `+++Candor(level=LEVEL)` | `low|medium|high` | Control feedback directness |
 | `+++Export(format=FORMAT)` | `text|markdown|json|yaml` | Export visible conversation context and active state |
 | `+++Dump(format=FORMAT)` | Same as Export | Produce a quicker/raw Export |
+| `+++N2(iterations=N)` | Integer `1..5`; default 3 | Meta: deep rigorous analysis — activates ChatScope + Reasoning, StepByStep, FactCheck, Refine |
+| `+++Storm(limit, diversity, iterations, lens, domain)` | `limit` `1..20` (15); `diversity` `low|medium|high` (high); `iterations` `1..5` (3); `lens`/`domain` text ≤ 80 | Meta: novel-idea engine — activates ChatScope + Brainstorm, Import, Debate, Refine, Critique |
 
 `+++Validate` is not defined and is not supported.
+
+## Meta-decorators
+
+`+++N2` and `+++Storm` are meta-decorators: each one treats `+++ChatScope` as active
+first, then activates a fixed stack of behavioral decorators — `N2` for deep rigorous
+analysis (Reasoning, StepByStep, FactCheck, Refine), `Storm` for genuinely novel idea
+generation (Brainstorm, Import, Debate, Refine, Critique). Full expansion, structure,
+parameters, and deactivation rules ship in the `fieldops-prompt-decorators` skill
+(`references/meta-decorators.md`).
 
 ## Composition rules
 
@@ -125,8 +136,7 @@ Literal documentation example:
 
 - Decorators are user-level modifiers under the instruction precedence in `CLAUDE.md`.
   They never grant permissions, expand authorization, override a required skill workflow,
-  or create unavailable tools, and they never infer authorization from a URL, brand, or
-  hostname.
+  or create unavailable tools.
 - `+++Reasoning` yields a concise, visible rationale -- assumptions, evidence,
   calculations, and decision factors. It never exposes hidden chain-of-thought.
 - Source-related decorators (`CiteSources`, `FactCheck`, `Export`) require credible,

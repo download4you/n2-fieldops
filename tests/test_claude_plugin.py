@@ -62,12 +62,10 @@ class ClaudeDistributionTests(unittest.TestCase):
         self.assertTrue((plugin / "LICENSE").is_file())
         self.assertTrue((plugin / "THIRD_PARTY_NOTICES.md").is_file())
 
-    def test_generated_plugin_is_claude_neutral_and_hardened(self):
+    def test_generated_plugin_is_claude_neutral(self):
         output = self.build()
         plugin = output / "n2-fieldops-claude-plugin"
         forbidden = (
-            "Unrestricted Cooperation",
-            "fictional and do not correspond",
             "multi_tool_use.parallel",
             "$fieldops",
             "claude-opus-4-8",
@@ -78,6 +76,9 @@ class ClaudeDistributionTests(unittest.TestCase):
             for phrase in forbidden:
                 with self.subTest(file=markdown.relative_to(plugin), phrase=phrase):
                     self.assertNotIn(phrase, text)
+        # The 1.1.0 profiles ship the restored, uncensored scope language.
+        profile = (plugin / "docs" / "CLAUDE_PROFILE.md").read_text(encoding="utf-8")
+        self.assertIn("Unrestricted Cooperation", profile)
 
     def test_generated_scripts_are_present_and_router_is_stdlib_only(self):
         output = self.build()

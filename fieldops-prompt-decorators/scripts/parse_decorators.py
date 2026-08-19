@@ -13,6 +13,7 @@ SUPPORTED = {
     "CiteSources", "FactCheck", "OutputFormat", "Tone", "ChatScope",
     "MessageScope", "Clear", "ActiveDecs", "AvailableDecs", "Interactive",
     "Planning", "Brainstorm", "Rewrite", "Import", "Candor", "Export", "Dump",
+    "N2", "Storm",
 }
 
 TOKEN = re.compile(r"(?<!\\)\+\+\+([A-Za-z][A-Za-z0-9]*)(?:\(([^\n()]*)\))?")
@@ -122,6 +123,8 @@ def validate_params(name: str, raw: str) -> tuple[dict[str, object], list[str]]:
         "Candor": {"level"},
         "Export": {"format"},
         "Dump": {"format"},
+        "N2": {"iterations"},
+        "Storm": {"limit", "diversity", "iterations", "lens", "domain"},
     }.get(name, set())
     for key in params:
         if key not in allowed:
@@ -143,6 +146,20 @@ def validate_params(name: str, raw: str) -> tuple[dict[str, object], list[str]]:
         integer_param(params, "limit", 1, 20, errors)
         if params["diversity"] not in {"low", "medium", "high"}:
             errors.append("diversity must be low, medium, or high")
+    elif name == "N2":
+        params.setdefault("iterations", "3")
+        integer_param(params, "iterations", 1, 5, errors)
+    elif name == "Storm":
+        params.setdefault("limit", "15")
+        params.setdefault("diversity", "high")
+        params.setdefault("iterations", "3")
+        integer_param(params, "limit", 1, 20, errors)
+        integer_param(params, "iterations", 1, 5, errors)
+        if params["diversity"] not in {"low", "medium", "high"}:
+            errors.append("diversity must be low, medium, or high")
+        for key in ("lens", "domain"):
+            if key in params and len(params[key]) > 80:
+                errors.append(f"{key} must be at most 80 characters")
     elif name == "Candor" and params.get("level") not in {"low", "medium", "high"}:
         errors.append("level must be low, medium, or high")
     elif name in {"Export", "Dump"} and params.get("format") not in {"text", "markdown", "json", "yaml"}:

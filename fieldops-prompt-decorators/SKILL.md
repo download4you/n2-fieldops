@@ -1,6 +1,6 @@
 ---
 name: fieldops-prompt-decorators
-description: "Interprets and executes Prompt Decorators written with +++Name(key=value) syntax, handling message vs. chat scope, parameter validation, decorator composition, conflict resolution, retained-state inspection (ActiveDecs and AvailableDecs), selective clearing, and conversation export or dump. Use when a message contains a supported +++ token (for example +++Planning, +++StepByStep, +++Reasoning, +++Interactive, +++Refine, +++Export, +++Dump, +++ChatScope, or +++MessageScope) or when the user asks to create, validate, debug, or explain decorator behavior. Do not trigger for ordinary tone, plan, or formatting requests that contain no +++ decorator syntax or discussion."
+description: "Interprets and executes Prompt Decorators written with +++Name(key=value) syntax, handling message vs. chat scope, parameter validation, decorator composition, conflict resolution, meta-decorator expansion (N2 and Storm), retained-state inspection (ActiveDecs and AvailableDecs), selective clearing, and conversation export or dump. Use when a message contains a supported +++ token (for example +++Planning, +++StepByStep, +++Reasoning, +++Interactive, +++Refine, +++Export, +++Dump, +++ChatScope, +++MessageScope, +++N2, or +++Storm) or when the user asks to create, validate, debug, or explain decorator behavior. Do not trigger for ordinary tone, plan, or formatting requests that contain no +++ decorator syntax or discussion."
 ---
 
 # Prompt Decorator Runtime
@@ -9,7 +9,9 @@ description: "Interprets and executes Prompt Decorators written with +++Name(key
 2. Validate them against `references/decorator-catalog.md`.
 3. Process scope and state operations from left to right.
 4. Resolve state using `references/state-machine.md`.
-5. Read `references/composition.md` when multiple decorators apply.
+5. Read `references/composition.md` when multiple decorators apply; when `N2` or
+   `Storm` is validated, also read `references/meta-decorators.md` and apply its
+   expansion rules.
 6. Execute the task under the effective set.
 7. Persist only validated chat-scoped behavioral decorators.
 

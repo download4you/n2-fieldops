@@ -19,4 +19,7 @@ Apply precedence in this order:
 - `Tone + Candor`: tone controls style; candor controls directness.
 - `Export/Dump`: export only visible conversation content and active decorator state;
   never imply access to hidden reasoning or unavailable messages.
+- `N2`/`Storm`: expand the meta-decorator stack first (see
+  `references/meta-decorators.md`); explicit tokens in the same message then overlay
+  or adjust that stack.
 - Mandatory platform output, channels, permissions, tools, and skill workflows win.
